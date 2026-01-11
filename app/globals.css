@@ -26,6 +26,11 @@
   --color-wedding-rose: #E8D5D0;
   --color-wedding-sage: #D4D9D0;
   --color-wedding-pearl: #F5F5F0;
+
+  /* Theme Colors (Dress Code) */
+  --color-wedding-pink: #E8C4C4;
+  --color-wedding-beige: #D4C4A8;
+  --color-wedding-tan: #C9A86C;
 }
 
 /* Global Styles */

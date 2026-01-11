@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
 import { Countdown } from "@/components/ui/Countdown";
-import { ThemeColorCircles } from "@/components/ui/ThemeColorCircles";
 
 export function HeroSection() {
     const hashtags = [
@@ -13,9 +12,16 @@ export function HeroSection() {
         "#ELLAveyou14nityGODFREY",
     ];
 
+    // Theme Colors for visual accent
+    const themeColors = [
+        { name: "Rosy Clay", hex: "#BC887A" },
+        { name: "Soft Peach", hex: "#E8AF93" },
+        { name: "Champagne", hex: "#F4F1D8" },
+        { name: "Warm Tan", hex: "#D8B98F" },
+    ];
+
     return (
         <>
-            {/* ThemeColorCircles removed */}
             <section id="home" className="relative h-screen w-full overflow-hidden">
                 {/* Background Placeholder */}
                 <PlaceholderImage
@@ -45,7 +51,7 @@ export function HeroSection() {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.5, duration: 0.8 }}
-                        className="text-wedding-ivory text-5xl md:text-7xl lg:text-9xl tracking-tight mb-4"
+                        className="text-wedding-ivory text-4xl md:text-6xl lg:text-8xl tracking-tight mb-4"
                         style={{ fontFamily: "var(--font-display)" }}
                     >
                         Godfrey{" "}
@@ -58,7 +64,7 @@ export function HeroSection() {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.8, duration: 0.8 }}
-                        className="text-wedding-pearl/90 text-base md:text-xl lg:text-2xl italic font-light max-w-2xl mb-2"
+                        className="text-wedding-pearl/90 text-sm md:text-lg lg:text-xl italic font-light max-w-2xl mb-2"
                         style={{ fontFamily: "var(--font-heading)" }}
                     >
                         &ldquo;I have found the one whom my soul loves&rdquo;
@@ -72,6 +78,23 @@ export function HeroSection() {
                     >
                         — Song of Solomon 3:4
                     </motion.p>
+
+                    {/* Theme Color Circles - Mobile Friendly */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 1.1, duration: 0.6 }}
+                        className="flex items-center gap-2 mt-6"
+                    >
+                        {themeColors.map((color, index) => (
+                            <div
+                                key={index}
+                                className="w-4 h-4 md:w-5 md:h-5 rounded-full border border-white/30 shadow-sm"
+                                style={{ backgroundColor: color.hex }}
+                                title={color.name}
+                            />
+                        ))}
+                    </motion.div>
 
                     {/* Countdown */}
                     <Countdown />

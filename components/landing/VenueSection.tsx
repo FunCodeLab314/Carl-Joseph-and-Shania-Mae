@@ -1,80 +1,84 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Heart, Utensils, ExternalLink } from "lucide-react";
 
 export function VenueSection() {
+    const images = [
+        "/photos/front.jpg",
+        "/photos/venue side0.jpg",
+        "/photos/venue side1.jpg",
+    ];
+
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    // Auto-cycle images every 3 seconds
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentIndex((prev) => (prev + 1) % images.length);
+        }, 3000);
+
+        return () => clearInterval(interval);
+    }, [images.length]);
+
     return (
         <section id="venue" className="bg-wedding-cream relative">
-            {/* Image Grid - Mobile: Stacked, Desktop: Artistic Grid */}
-            <div className="px-4 pt-8 md:px-8 md:pt-12">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-6xl mx-auto">
-                    {/* Main Image (Largest - spans 2 rows on desktop) */}
+            {/* Hero Image with Auto-Cycling Fade Animation */}
+            <div className="relative w-full h-[70vh] md:h-[85vh] overflow-hidden">
+                {/* Image Carousel with Fade */}
+                <AnimatePresence mode="wait">
                     <motion.div
-                        className="relative aspect-[3/4] md:row-span-2 md:col-span-2 overflow-hidden rounded-lg shadow-lg"
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
+                        key={currentIndex}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.8, ease: "easeInOut" }}
+                        className="absolute inset-0"
                     >
                         <img
-                            src="/photos/front.jpg"
-                            alt="Wedding Venue Main"
+                            src={images[currentIndex]}
+                            alt={`Venue ${currentIndex + 1}`}
                             className="w-full h-full object-cover"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                     </motion.div>
+                </AnimatePresence>
 
-                    {/* Secondary Image 1 */}
-                    <motion.div
-                        className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-lg"
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.1 }}
-                    >
-                        <img
-                            src="/photos/venue side0.jpg"
-                            alt="Venue Detail 1"
-                            className="w-full h-full object-cover"
-                        />
-                    </motion.div>
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/20" />
 
-                    {/* Secondary Image 2 */}
-                    <motion.div
-                        className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-lg"
-                        initial={{ opacity: 0, y: 30 }}
+                {/* Text Overlay */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
+                        transition={{ duration: 0.8 }}
+                        className="text-wedding-ivory text-5xl md:text-7xl lg:text-8xl mb-6"
+                        style={{ fontFamily: "var(--font-display)" }}
                     >
-                        <img
-                            src="/photos/venue side1.jpg"
-                            alt="Venue Detail 2"
-                            className="w-full h-full object-cover"
-                        />
-                    </motion.div>
+                        The Venue
+                    </motion.h2>
+
+                    {/* Dots Indicator */}
+                    <div className="flex gap-2 mb-8">
+                        {images.map((_, index) => (
+                            <button
+                                key={index}
+                                onClick={() => setCurrentIndex(index)}
+                                className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentIndex
+                                        ? "bg-wedding-gold w-6"
+                                        : "bg-white/50 hover:bg-white/80"
+                                    }`}
+                                aria-label={`Go to image ${index + 1}`}
+                            />
+                        ))}
+                    </div>
                 </div>
             </div>
 
-            {/* Title */}
-            <motion.div
-                className="text-center py-12 md:py-16"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-            >
-                <h2
-                    className="text-wedding-charcoal text-4xl md:text-5xl lg:text-6xl"
-                    style={{ fontFamily: "var(--font-display)" }}
-                >
-                    The Venue
-                </h2>
-            </motion.div>
-
             {/* Details Content */}
-            <div className="max-w-5xl mx-auto px-6 pb-20">
+            <div className="max-w-5xl mx-auto px-6 py-16 md:py-20">
                 <motion.div
                     className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16"
                     initial={{ opacity: 0, y: 50 }}

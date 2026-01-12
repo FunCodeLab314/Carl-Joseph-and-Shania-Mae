@@ -21,11 +21,11 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Brianna & Gabriel | December 31, 2025",
+  title: "Godfrey & Vanesa | February 14, 2026",
   description: "Join us in celebrating our love. We can't wait to share this special day with you.",
   openGraph: {
-    title: "Brianna & Gabriel | Wedding Celebration",
-    description: "Join us in celebrating our love. December 31, 2025.",
+    title: "Godfrey & Vanesa | Wedding Celebration",
+    description: "Join us in celebrating our love. February 14, 2026.",
   },
 };
 

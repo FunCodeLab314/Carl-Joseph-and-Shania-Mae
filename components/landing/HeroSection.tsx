@@ -12,14 +12,6 @@ export function HeroSection() {
         "#ELLAveyou14nityGODFREY",
     ];
 
-    // Theme Colors for visual accent
-    const themeColors = [
-        { name: "Rosy Clay", hex: "#BC887A" },
-        { name: "Soft Peach", hex: "#E8AF93" },
-        { name: "Champagne", hex: "#F4F1D8" },
-        { name: "Warm Tan", hex: "#D8B98F" },
-    ];
-
     return (
         <>
             <section id="home" className="relative h-screen w-full overflow-hidden">
@@ -86,14 +78,6 @@ export function HeroSection() {
                         transition={{ delay: 1.1, duration: 0.6 }}
                         className="flex items-center gap-2 mt-6"
                     >
-                        {themeColors.map((color, index) => (
-                            <div
-                                key={index}
-                                className="w-4 h-4 md:w-5 md:h-5 rounded-full border border-white/30 shadow-sm"
-                                style={{ backgroundColor: color.hex }}
-                                title={color.name}
-                            />
-                        ))}
                     </motion.div>
 
                     {/* Countdown */}

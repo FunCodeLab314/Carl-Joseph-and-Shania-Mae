@@ -34,31 +34,32 @@ export function DressCodeSection() {
                         Dress Code: Formal
                     </h2>
 
-                    <div className="space-y-12 md:space-y-16">
+                    {/* Two Columns: Guests | Principal Sponsors */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                         {/* Guests Section */}
-                        <div className="flex flex-col items-center">
-                            <h3 className="text-xl md:text-2xl text-wedding-charcoal mb-6 font-semibold" style={{ fontFamily: "var(--font-heading)" }}>
+                        <div className="bg-white/50 rounded-xl p-6 border border-wedding-gold/10">
+                            <h3 className="text-lg md:text-xl text-wedding-charcoal mb-4 font-semibold" style={{ fontFamily: "var(--font-heading)" }}>
                                 Guests
                             </h3>
-                            <div className="space-y-6 text-center max-w-md mx-auto">
+                            <div className="space-y-4 text-left">
                                 <div>
-                                    <span className="block text-wedding-charcoal text-sm md:text-base font-medium mb-1">Gentlemen:</span>
-                                    <span className="text-wedding-slate text-sm">Suit and Pants in any color</span>
+                                    <span className="block text-wedding-charcoal text-sm font-medium mb-1">Gentlemen:</span>
+                                    <span className="text-wedding-slate text-xs">Suit and Pants in any color</span>
                                 </div>
                                 <div>
-                                    <span className="block text-wedding-charcoal text-sm md:text-base font-medium mb-1">Ladies:</span>
-                                    <span className="text-wedding-slate text-sm block mb-2">Long gown in shades of Neutral Pink</span>
-                                    <span className="text-wedding-slate/60 text-[10px] uppercase tracking-wider block mb-4">
+                                    <span className="block text-wedding-charcoal text-sm font-medium mb-1">Ladies:</span>
+                                    <span className="text-wedding-slate text-xs block mb-2">Long gown in shades of Neutral Pink</span>
+                                    <span className="text-wedding-slate/60 text-[9px] uppercase tracking-wider block mb-3">
                                         (Rosy Clay, Soft Peach, Light Apricot, Blush Nude, Soft Ivory)
                                     </span>
                                 </div>
 
-                                {/* Guest Palette - Flex Wrap for Mobile */}
-                                <div className="flex flex-wrap justify-center gap-2 md:gap-0 md:flex-nowrap border border-wedding-gold/20 rounded-md overflow-hidden bg-white/50 p-2 md:p-0">
+                                {/* Guest Palette */}
+                                <div className="flex flex-wrap gap-1 border border-wedding-gold/20 rounded-md overflow-hidden bg-white/30 p-1">
                                     {guestPalette.map((color, i) => (
                                         <div
                                             key={i}
-                                            className="w-10 h-10 md:w-12 md:h-14 md:flex-1 rounded-md md:rounded-none border md:border-0 border-white/50"
+                                            className="w-8 h-8 rounded-sm flex-1"
                                             style={{ backgroundColor: color.hex }}
                                             title={`${color.name}: ${color.hex}`}
                                         />
@@ -68,31 +69,29 @@ export function DressCodeSection() {
                         </div>
 
                         {/* Principal Sponsors Section */}
-                        <div className="flex flex-col items-center">
-                            <h3 className="text-xl md:text-2xl text-wedding-charcoal mb-6 font-semibold" style={{ fontFamily: "var(--font-heading)" }}>
+                        <div className="bg-white/50 rounded-xl p-6 border border-wedding-gold/10">
+                            <h3 className="text-lg md:text-xl text-wedding-charcoal mb-4 font-semibold" style={{ fontFamily: "var(--font-heading)" }}>
                                 Principal Sponsors
                             </h3>
-                            <div className="space-y-6 text-center max-w-md mx-auto">
-                                <div className="space-y-4">
-                                    <div>
-                                        <span className="block text-wedding-charcoal text-sm md:text-base font-medium mb-1">Gentlemen:</span>
-                                        <span className="text-wedding-slate text-sm">Suit and tie in Champagne tones</span>
-                                    </div>
-                                    <div>
-                                        <span className="block text-wedding-charcoal text-sm md:text-base font-medium mb-1">Ladies:</span>
-                                        <span className="text-wedding-slate text-sm">Evening gown in Beige or Tan</span>
-                                    </div>
-                                    <span className="text-wedding-slate/60 text-[10px] uppercase tracking-wider block mt-2">
-                                        (Champagne Cream, Warm Tan)
-                                    </span>
+                            <div className="space-y-4 text-left">
+                                <div>
+                                    <span className="block text-wedding-charcoal text-sm font-medium mb-1">Gentlemen:</span>
+                                    <span className="text-wedding-slate text-xs">Suit and tie in Champagne tones</span>
                                 </div>
+                                <div>
+                                    <span className="block text-wedding-charcoal text-sm font-medium mb-1">Ladies:</span>
+                                    <span className="text-wedding-slate text-xs">Evening gown in Beige or Tan</span>
+                                </div>
+                                <span className="text-wedding-slate/60 text-[9px] uppercase tracking-wider block">
+                                    (Champagne Cream, Warm Tan)
+                                </span>
 
-                                {/* Sponsor Palette - Flex Wrap for Mobile */}
-                                <div className="flex flex-wrap justify-center gap-2 md:gap-0 md:flex-nowrap border border-wedding-gold/20 rounded-md overflow-hidden bg-white/50 p-2 md:p-0 max-w-[150px] mx-auto">
+                                {/* Sponsor Palette */}
+                                <div className="flex gap-1 border border-wedding-gold/20 rounded-md overflow-hidden bg-white/30 p-1 max-w-[100px]">
                                     {sponsorPalette.map((color, i) => (
                                         <div
                                             key={i}
-                                            className="w-10 h-10 md:w-14 md:h-14 md:flex-1 rounded-md md:rounded-none border md:border-0 border-white/50"
+                                            className="w-10 h-8 rounded-sm flex-1"
                                             style={{ backgroundColor: color.hex }}
                                             title={`${color.name}: ${color.hex}`}
                                         />

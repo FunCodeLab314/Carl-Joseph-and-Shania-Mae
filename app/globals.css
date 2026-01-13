@@ -17,10 +17,10 @@
   --color-wedding-gold: #D4AF6F;
   --color-wedding-antique: #C5A572;
 
-  /* Red Accent Spectrum */
-  --color-wedding-red: #C41E3A;
-  --color-wedding-darkred: #8B0000;
-  --color-wedding-lightred: #E57373;
+  /* Lilac Accent Spectrum */
+  --color-wedding-lilac: #9B7EBD;
+  --color-wedding-darklilac: #7B5EA7;
+  --color-wedding-lightlilac: #C8A2C8;
 
   /* Text & Charcoal Tones */
   --color-wedding-charcoal: #2B2B2B;
@@ -73,12 +73,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-wedding-red);
+  background: var(--color-wedding-lilac);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-wedding-darkred);
+  background: var(--color-wedding-darklilac);
 }
 
 /* Modal scrollbar - hidden but still scrollable */

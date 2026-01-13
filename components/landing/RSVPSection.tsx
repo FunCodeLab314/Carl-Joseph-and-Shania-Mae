@@ -3,9 +3,9 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Heart, X, Send, Loader2 } from "lucide-react";
+import { Heart, X, Send, Loader2, Search, CheckCircle, AlertCircle } from "lucide-react";
 import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
-import { submitRSVP, getInvitationData } from "@/app/actions";
+import { submitRSVP, getInvitationData, checkGuestStatus } from "@/app/actions";
 import { ConfirmationModal } from "./ConfirmationModal";
 
 export function RSVPSection() {
@@ -29,6 +29,18 @@ export function RSVPSection() {
     const [isLoadingInvitation, setIsLoadingInvitation] = useState(false);
     const [invitationId, setInvitationId] = useState<string | null>(null);
     const [maxGuests, setMaxGuests] = useState(2); // Default fallback
+
+    // Status Check State
+    const [showStatusModal, setShowStatusModal] = useState(false);
+    const [statusQuery, setStatusQuery] = useState("");
+    const [statusResult, setStatusResult] = useState<{
+        name: string;
+        email: string;
+        attending: boolean;
+        guestCount: number;
+    } | null>(null);
+    const [statusError, setStatusError] = useState<string | null>(null);
+    const [isCheckingStatus, setIsCheckingStatus] = useState(false);
 
     // Fetch invitation data on mount if invite ID exists
     useEffect(() => {
@@ -62,6 +74,26 @@ export function RSVPSection() {
         fetchInvitationData();
     }, [inviteId]);
 
+    const handleCheckStatus = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsCheckingStatus(true);
+        setStatusResult(null);
+        setStatusError(null);
+
+        try {
+            const result = await checkGuestStatus(statusQuery);
+            if (result.success && result.data) {
+                setStatusResult(result.data);
+            } else {
+                setStatusError(result.error || "No RSVP found.");
+            }
+        } catch {
+            setStatusError("An error occurred. Please try again.");
+        } finally {
+            setIsCheckingStatus(false);
+        }
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
@@ -74,11 +106,7 @@ export function RSVPSection() {
             data.append("guestCount", formData.guests);
             data.append("attending", formData.attending);
             data.append("message", formData.message);
-
-            // Include invitation_id if available
-            if (invitationId) {
-                data.append("invitationId", invitationId);
-            }
+            data.append("invitationId", invitationId || "");
 
             const result = await submitRSVP(data);
 
@@ -385,6 +413,122 @@ export function RSVPSection() {
                 )}
             </AnimatePresence>
 
+            {/* Status Check Modal */}
+            <AnimatePresence>
+                {showStatusModal && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+                        onClick={() => setShowStatusModal(false)}
+                    >
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.95 }}
+                            className="relative w-full max-w-md bg-wedding-charcoal border border-wedding-red/30 rounded-xl p-6 md:p-8"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <button
+                                onClick={() => setShowStatusModal(false)}
+                                className="absolute top-4 right-4 text-wedding-champagne/60 hover:text-wedding-ivory transition-colors"
+                            >
+                                <X size={20} />
+                            </button>
+
+                            <h3
+                                className="text-wedding-ivory text-2xl mb-6 text-center"
+                                style={{ fontFamily: "var(--font-display)" }}
+                            >
+                                Check Your RSVP
+                            </h3>
+
+                            {!statusResult ? (
+                                <form onSubmit={handleCheckStatus} className="space-y-4">
+                                    <div>
+                                        <label className="block text-wedding-red text-xs tracking-[0.2em] uppercase mb-2">
+                                            Email or Full Name
+                                        </label>
+                                        <div className="relative">
+                                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-wedding-champagne/40" size={18} />
+                                            <input
+                                                type="text"
+                                                value={statusQuery}
+                                                onChange={(e) => setStatusQuery(e.target.value)}
+                                                placeholder="Enter your email or name"
+                                                className="w-full bg-transparent border border-wedding-champagne/20 rounded-lg py-3 pl-10 pr-4 text-wedding-ivory focus:border-wedding-red focus:outline-none transition-colors placeholder:text-wedding-champagne/30"
+                                                required
+                                            />
+                                        </div>
+                                    </div>
+
+                                    {statusError && (
+                                        <div className="flex items-center gap-2 text-red-400 text-xs bg-red-500/10 p-3 rounded-lg border border-red-500/20">
+                                            <AlertCircle size={14} />
+                                            {statusError}
+                                        </div>
+                                    )}
+
+                                    <button
+                                        type="submit"
+                                        disabled={isCheckingStatus}
+                                        className="w-full bg-wedding-red text-wedding-charcoal py-3 rounded-lg font-bold uppercase tracking-wider text-sm hover:bg-wedding-darkred transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+                                    >
+                                        {isCheckingStatus ? (
+                                            <>
+                                                <Loader2 className="animate-spin" size={16} />
+                                                Checking...
+                                            </>
+                                        ) : (
+                                            "Find RSVP"
+                                        )}
+                                    </button>
+                                </form>
+                            ) : (
+                                <div className="text-center space-y-6">
+                                    <div className="flex flex-col items-center gap-2">
+                                        <CheckCircle className="text-green-500" size={48} />
+                                        <h4 className="text-xl text-wedding-ivory">Welcome back, {statusResult.name.split(" ")[0]}!</h4>
+                                    </div>
+
+                                    <div className="bg-wedding-champagne/5 rounded-lg p-4 border border-wedding-champagne/10 space-y-3">
+                                        <div className="flex justify-between items-center text-sm">
+                                            <span className="text-wedding-champagne/60">Status:</span>
+                                            <span className={`font-bold px-2 py-1 rounded text-xs uppercase tracking-wider ${statusResult.attending
+                                                    ? "bg-green-500/20 text-green-400"
+                                                    : "bg-red-500/20 text-red-400"
+                                                }`}>
+                                                {statusResult.attending ? "Confirmed" : "Declined"}
+                                            </span>
+                                        </div>
+                                        <div className="flex justify-between items-center text-sm">
+                                            <span className="text-wedding-champagne/60">Guests:</span>
+                                            <span className="text-wedding-ivory">{statusResult.guestCount}</span>
+                                        </div>
+                                        <div className="flex justify-between items-center text-sm">
+                                            <span className="text-wedding-champagne/60">Email:</span>
+                                            <span className="text-wedding-ivory truncate max-w-[150px]">{statusResult.email}</span>
+                                        </div>
+                                    </div>
+
+                                    <button
+                                        onClick={() => {
+                                            setStatusResult(null);
+                                            setStatusQuery("");
+                                            setShowStatusModal(false);
+                                        }}
+                                        className="text-wedding-champagne/60 text-xs hover:text-wedding-ivory transition-colors underline underline-offset-4"
+                                    >
+                                        Need to change this? Contact the couple.
+                                    </button>
+                                </div>
+                            )}
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
             {/* RSVP Section - CTA Button Only */}
             <section
                 id="rsvp"
@@ -466,6 +610,23 @@ export function RSVPSection() {
                         </motion.span>
                         <span className="relative z-10">Respond Now</span>
                     </motion.button>
+
+                    {/* Check Status Link */}
+                    <motion.div
+                        className="mt-6 text-center"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ delay: 0.5 }}
+                    >
+                        <button
+                            onClick={() => setShowStatusModal(true)}
+                            className="text-wedding-champagne/60 hover:text-wedding-ivory text-xs md:text-sm underline underline-offset-4 transition-colors flex items-center justify-center gap-2 mx-auto group"
+                            style={{ fontFamily: "var(--font-body)" }}
+                        >
+                            <Search size={14} className="group-hover:scale-110 transition-transform" />
+                            Already responded? Check your status here.
+                        </button>
+                    </motion.div>
 
                     {/* Gift Message */}
                     <motion.p

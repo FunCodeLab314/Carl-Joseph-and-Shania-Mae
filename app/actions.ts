@@ -60,6 +60,65 @@ export async function getInvitationData(inviteId: string): Promise<InvitationDat
     }
 }
 
+interface GuestStatusData {
+    success: boolean;
+    data?: {
+        name: string;
+        email: string;
+        attending: boolean;
+        guestCount: number;
+    };
+    error?: string;
+}
+
+export async function checkGuestStatus(query: string): Promise<GuestStatusData> {
+    try {
+        if (!query || !query.trim()) {
+            return {
+                success: false,
+                error: "Please enter your email or full name.",
+            };
+        }
+
+        const searchTerm = query.trim().toLowerCase();
+
+        // Search by exact email or case-insensitive name
+        // Using ilike for name and eq for email to be precise on email but flexible on name
+        // Note: OR logic in Supabase requires distinct filters usually, but we can try .or()
+        const { data, error } = await supabase
+            .from("guests")
+            .select("name, email, attending, guest_count")
+            .or(`email.eq.${searchTerm},name.ilike.%${searchTerm}%`)
+            .limit(1)
+            .single();
+
+        if (error || !data) {
+            // It's not necessarily an error if not found, just no result
+            return {
+                success: false,
+                error: "No RSVP found. Please try the email you used or submit a new response.",
+            };
+        }
+
+        return {
+            success: true,
+            data: {
+                name: data.name,
+                email: data.email,
+                attending: data.attending,
+                guestCount: data.guest_count,
+            },
+        };
+
+    } catch (error) {
+        console.error("Check Guest Status Error:", error);
+        return {
+            success: false,
+            error: "An unexpected error occurred while checking status.",
+        };
+    }
+}
+
 export async function submitRSVP(formData: FormData): Promise<SubmitRSVPResult> {
     try {
         // Step A: Extract form data
@@ -78,10 +137,26 @@ export async function submitRSVP(formData: FormData): Promise<SubmitRSVPResult> 
             return { success: false, message: "Please provide your email address." };
         }
 
+        const cleanEmail = email.trim().toLowerCase();
+
+        // Check for existing RSVP with this email
+        const { data: existingGuest, error: checkError } = await supabase
+            .from("guests")
+            .select("id")
+            .eq("email", cleanEmail)
+            .single();
+
+        if (existingGuest) {
+            return {
+                success: false,
+                message: "An RSVP with this email has already been submitted. Please check your status instead.",
+            };
+        }
+
         // Step B: Insert into Supabase
         const guestData: Record<string, unknown> = {
             name: fullName.trim(),
-            email: email.trim().toLowerCase(),
+            email: cleanEmail,
             guest_count: guestCount,
             attending,
             message: message?.trim() || null,
@@ -113,7 +188,7 @@ export async function submitRSVP(formData: FormData): Promise<SubmitRSVPResult> 
             );
 
             await sendEmail({
-                to: email.trim().toLowerCase(),
+                to: cleanEmail,
                 subject: attending
                     ? "🎉 Your RSVP is Confirmed! | Wedding Celebration"
                     : "Thank You for Your Response | Wedding Celebration",

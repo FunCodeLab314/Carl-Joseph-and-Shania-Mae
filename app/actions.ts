@@ -10,6 +10,56 @@ interface SubmitRSVPResult {
     message: string;
 }
 
+interface InvitationData {
+    success: boolean;
+    familyName: string | null;
+    maxGuests: number;
+    error?: string;
+}
+
+export async function getInvitationData(inviteId: string): Promise<InvitationData> {
+    try {
+        if (!inviteId || !inviteId.trim()) {
+            return {
+                success: false,
+                familyName: null,
+                maxGuests: 2,
+                error: "Invalid invitation ID.",
+            };
+        }
+
+        const { data, error } = await supabase
+            .from("invitations")
+            .select("family_name, max_guests")
+            .eq("id", inviteId.trim())
+            .single();
+
+        if (error || !data) {
+            console.error("Supabase Error fetching invitation:", error);
+            return {
+                success: false,
+                familyName: null,
+                maxGuests: 2,
+                error: "Invitation not found.",
+            };
+        }
+
+        return {
+            success: true,
+            familyName: data.family_name || null,
+            maxGuests: data.max_guests || 2,
+        };
+    } catch (error) {
+        console.error("Get Invitation Data Error:", error);
+        return {
+            success: false,
+            familyName: null,
+            maxGuests: 2,
+            error: "An unexpected error occurred.",
+        };
+    }
+}
+
 export async function submitRSVP(formData: FormData): Promise<SubmitRSVPResult> {
     try {
         // Step A: Extract form data
@@ -18,6 +68,7 @@ export async function submitRSVP(formData: FormData): Promise<SubmitRSVPResult> 
         const guestCount = parseInt(formData.get("guestCount") as string) || 1;
         const attending = formData.get("attending") === "yes";
         const message = formData.get("message") as string;
+        const invitationId = formData.get("invitationId") as string | null;
 
         // Validate required fields
         if (!fullName || !fullName.trim()) {
@@ -28,13 +79,20 @@ export async function submitRSVP(formData: FormData): Promise<SubmitRSVPResult> 
         }
 
         // Step B: Insert into Supabase
-        const { error: dbError } = await supabase.from("guests").insert({
+        const guestData: Record<string, unknown> = {
             name: fullName.trim(),
             email: email.trim().toLowerCase(),
             guest_count: guestCount,
             attending,
             message: message?.trim() || null,
-        });
+        };
+
+        // Include invitation_id if provided
+        if (invitationId && invitationId.trim()) {
+            guestData.invitation_id = invitationId.trim();
+        }
+
+        const { error: dbError } = await supabase.from("guests").insert(guestData);
 
         if (dbError) {
             console.error("Supabase Error:", dbError);

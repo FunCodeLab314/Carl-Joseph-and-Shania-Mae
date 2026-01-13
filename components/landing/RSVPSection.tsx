@@ -1,13 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Heart, X, Send } from "lucide-react";
+import { Heart, X, Send, Loader2 } from "lucide-react";
 import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
-import { submitRSVP } from "@/app/actions";
+import { submitRSVP, getInvitationData } from "@/app/actions";
 import { ConfirmationModal } from "./ConfirmationModal";
 
 export function RSVPSection() {
+    const searchParams = useSearchParams();
+    const inviteId = searchParams.get("invite");
+
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -21,6 +25,43 @@ export function RSVPSection() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
+    // Invitation-specific state
+    const [isLoadingInvitation, setIsLoadingInvitation] = useState(false);
+    const [invitationId, setInvitationId] = useState<string | null>(null);
+    const [maxGuests, setMaxGuests] = useState(2); // Default fallback
+
+    // Fetch invitation data on mount if invite ID exists
+    useEffect(() => {
+        async function fetchInvitationData() {
+            if (!inviteId) return;
+
+            setIsLoadingInvitation(true);
+            try {
+                const result = await getInvitationData(inviteId);
+                if (result.success) {
+                    setInvitationId(inviteId);
+                    setMaxGuests(result.maxGuests);
+                    // Pre-fill family name if available
+                    if (result.familyName) {
+                        setFormData((prev) => ({
+                            ...prev,
+                            name: result.familyName!,
+                        }));
+                    }
+                } else {
+                    // Invalid invitation - use defaults
+                    console.warn("Invalid invitation:", result.error);
+                }
+            } catch (err) {
+                console.error("Error fetching invitation:", err);
+            } finally {
+                setIsLoadingInvitation(false);
+            }
+        }
+
+        fetchInvitationData();
+    }, [inviteId]);
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
@@ -33,6 +74,11 @@ export function RSVPSection() {
             data.append("guestCount", formData.guests);
             data.append("attending", formData.attending);
             data.append("message", formData.message);
+
+            // Include invitation_id if available
+            if (invitationId) {
+                data.append("invitationId", invitationId);
+            }
 
             const result = await submitRSVP(data);
 
@@ -52,6 +98,9 @@ export function RSVPSection() {
             setIsSubmitting(false);
         }
     };
+
+    // Generate guest options dynamically based on maxGuests
+    const guestOptions = Array.from({ length: maxGuests }, (_, i) => i + 1);
 
     return (
         <>
@@ -108,6 +157,18 @@ export function RSVPSection() {
                                     >
                                         Please respond by January 15, 2026
                                     </p>
+                                    {/* Loading invitation indicator */}
+                                    {isLoadingInvitation && (
+                                        <div className="flex items-center justify-center gap-2 mt-3">
+                                            <Loader2 className="animate-spin text-wedding-gold" size={16} />
+                                            <span
+                                                className="text-wedding-gold/80 text-xs"
+                                                style={{ fontFamily: "var(--font-body)" }}
+                                            >
+                                                Loading invitation details...
+                                            </span>
+                                        </div>
+                                    )}
                                 </div>
 
                                 {/* Form */}
@@ -163,13 +224,15 @@ export function RSVPSection() {
                                             onChange={(e) => setFormData({ ...formData, guests: e.target.value })}
                                             className="w-full bg-transparent border-b-2 border-wedding-champagne/40 text-wedding-ivory py-3 focus:border-wedding-gold focus:outline-none transition-all duration-300 cursor-pointer"
                                             style={{ fontFamily: "var(--font-body)" }}
+                                            disabled={isLoadingInvitation}
                                         >
-                                            <option value="1" className="bg-wedding-charcoal">
-                                                1 Guest (Just me)
-                                            </option>
-                                            <option value="2" className="bg-wedding-charcoal">
-                                                2 Guests (Me + 1)
-                                            </option>
+                                            {guestOptions.map((num) => (
+                                                <option key={num} value={num.toString()} className="bg-wedding-charcoal">
+                                                    {num === 1
+                                                        ? "1 Guest (Just me)"
+                                                        : `${num} Guests (Me + ${num - 1})`}
+                                                </option>
+                                            ))}
                                         </select>
                                     </div>
 

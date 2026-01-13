@@ -183,7 +183,7 @@ export function StorySection() {
                 <div
                     className="absolute inset-0"
                     style={{
-                        backgroundImage: `radial-gradient(circle at 2px 2px, var(--color-wedding-pink-accent) 1px, transparent 0)`,
+                        backgroundImage: `radial-gradient(circle at 2px 2px, var(--color-wedding-red) 1px, transparent 0)`,
                         backgroundSize: "40px 40px",
                     }}
                 />
@@ -198,7 +198,7 @@ export function StorySection() {
                 transition={{ duration: 0.8 }}
             >
                 <p
-                    className="text-wedding-pink-accent text-xs tracking-[0.3em] mb-4"
+                    className="text-wedding-red text-xs tracking-[0.3em] mb-4"
                     style={{ fontFamily: "var(--font-body)" }}
                 >
                     OUR STORY
@@ -210,7 +210,7 @@ export function StorySection() {
                 >
                     How We Met
                 </h2>
-                <div className="w-16 h-[1px] bg-wedding-pink-accent mx-auto" />
+                <div className="w-16 h-[1px] bg-wedding-red mx-auto" />
             </motion.div>
 
             {/* Story Content */}
@@ -267,7 +267,7 @@ export function StorySection() {
                                         transition={{ delay: 0.3, duration: 0.5 }}
                                         className="absolute top-4 left-4 md:top-6 md:left-6 z-20"
                                     >
-                                        <div className="bg-wedding-pink-accent/90 backdrop-blur-sm px-4 py-2 rounded-full">
+                                        <div className="bg-wedding-red/90 backdrop-blur-sm px-4 py-2 rounded-full">
                                             <span
                                                 className="text-wedding-charcoal text-xs md:text-sm font-semibold tracking-wider"
                                                 style={{ fontFamily: "var(--font-body)" }}
@@ -318,7 +318,7 @@ export function StorySection() {
                                         initial={{ scaleX: 0 }}
                                         animate={{ scaleX: 1 }}
                                         transition={{ delay: 0.2, duration: 0.5 }}
-                                        className="w-20 h-[2px] bg-wedding-pink-accent mx-auto md:mx-0 mb-6 md:mb-8 origin-left"
+                                        className="w-20 h-[2px] bg-wedding-red mx-auto md:mx-0 mb-6 md:mb-8 origin-left"
                                     />
 
                                     {/* Story Content */}
@@ -340,7 +340,7 @@ export function StorySection() {
                                         className="mt-8 md:mt-10"
                                     >
                                         <Heart
-                                            className="text-wedding-pink-accent/60 mx-auto md:mx-0"
+                                            className="text-wedding-red/60 mx-auto md:mx-0"
                                             size={24}
                                             fill="currentColor"
                                         />
@@ -357,7 +357,7 @@ export function StorySection() {
                     <div className="w-full max-w-md">
                         <div className="h-1 bg-wedding-champagne/40 rounded-full overflow-hidden">
                             <motion.div
-                                className="h-full bg-wedding-pink-accent rounded-full"
+                                className="h-full bg-wedding-red rounded-full"
                                 style={{ width: `${progress}%` }}
                                 transition={{ duration: 0.05 }}
                             />
@@ -372,7 +372,7 @@ export function StorySection() {
                                 goToPrevious();
                                 setIsPlaying(false);
                             }}
-                            className="p-3 rounded-full bg-wedding-charcoal/5 hover:bg-wedding-pink-accent/20 border border-wedding-pink-accent/30 text-wedding-charcoal hover:text-wedding-pink-accent transition-all duration-300 group"
+                            className="p-3 rounded-full bg-wedding-charcoal/5 hover:bg-wedding-red/20 border border-wedding-red/30 text-wedding-charcoal hover:text-wedding-red transition-all duration-300 group"
                             aria-label="Previous story"
                         >
                             <ChevronLeft
@@ -384,7 +384,7 @@ export function StorySection() {
                         {/* Play/Pause Button - Center & Larger */}
                         <button
                             onClick={togglePlayPause}
-                            className="p-4 rounded-full bg-wedding-pink-accent hover:bg-wedding-darkpink text-wedding-charcoal transition-all duration-300 shadow-lg group"
+                            className="p-4 rounded-full bg-wedding-red hover:bg-wedding-darkred text-wedding-charcoal transition-all duration-300 shadow-lg group"
                             aria-label={isPlaying ? "Pause slideshow" : "Play slideshow"}
                         >
                             {isPlaying ? (
@@ -400,7 +400,7 @@ export function StorySection() {
                                 goToNext();
                                 setIsPlaying(false);
                             }}
-                            className="p-3 rounded-full bg-wedding-charcoal/5 hover:bg-wedding-pink-accent/20 border border-wedding-pink-accent/30 text-wedding-charcoal hover:text-wedding-pink-accent transition-all duration-300 group"
+                            className="p-3 rounded-full bg-wedding-charcoal/5 hover:bg-wedding-red/20 border border-wedding-red/30 text-wedding-charcoal hover:text-wedding-red transition-all duration-300 group"
                             aria-label="Next story"
                         >
                             <ChevronRight
@@ -428,8 +428,8 @@ export function StorySection() {
                             >
                                 <span
                                     className={`absolute inset-0 rounded-full transition-all duration-300 ${index === currentIndex
-                                        ? "bg-wedding-pink-accent"
-                                        : "bg-wedding-champagne hover:bg-wedding-pink-accent/60"
+                                        ? "bg-wedding-red"
+                                        : "bg-wedding-champagne hover:bg-wedding-red/60"
                                         }`}
                                 />
                             </button>
@@ -449,13 +449,13 @@ export function StorySection() {
             {/* Bottom Decorative Element */}
             <div className="relative z-10 pt-8 pb-16 md:pb-24">
                 <div className="flex justify-center items-center gap-4">
-                    <div className="w-12 h-[1px] bg-wedding-pink-accent/40" />
+                    <div className="w-12 h-[1px] bg-wedding-red/40" />
                     <Heart
-                        className="text-wedding-pink-accent/40"
+                        className="text-wedding-red/40"
                         size={16}
                         fill="currentColor"
                     />
-                    <div className="w-12 h-[1px] bg-wedding-pink-accent/40" />
+                    <div className="w-12 h-[1px] bg-wedding-red/40" />
                 </div>
             </div>
         </section>

@@ -116,7 +116,7 @@ export function StorySection() {
         setIsPlaying((prev) => !prev);
     }, []);
 
-    // Auto-advance and progress bar logic
+    // Auto-advance logic - cycles through all images in a story before moving to next
     useEffect(() => {
         if (!isPlaying || isHovered) {
             clearTimers();
@@ -132,24 +132,22 @@ export function StorySection() {
             });
         }, 50);
 
-        // Auto-advance to next story
+        // Auto-advance: either to next image in story, or to next story
         autoAdvanceRef.current = setTimeout(() => {
-            goToNext();
+            const totalImages = currentStory.images.length;
+
+            if (currentImageIndex < totalImages - 1) {
+                // More images in current story - go to next image
+                setCurrentImageIndex((prev) => prev + 1);
+                setProgress(0);
+            } else {
+                // Last image in story - go to next story
+                goToNext();
+            }
         }, AUTO_ADVANCE_DURATION * 1000);
 
         return () => clearTimers();
-    }, [isPlaying, isHovered, currentIndex, goToNext, clearTimers]);
-
-    // Cycle through images if current story has multiple
-    useEffect(() => {
-        if (currentStory.images.length <= 1) return;
-
-        const imageInterval = setInterval(() => {
-            setCurrentImageIndex((prev) => (prev + 1) % currentStory.images.length);
-        }, 2500);
-
-        return () => clearInterval(imageInterval);
-    }, [currentStory.images.length, currentIndex]);
+    }, [isPlaying, isHovered, currentIndex, currentImageIndex, currentStory.images.length, goToNext, clearTimers]);
 
     // Keyboard navigation
     useEffect(() => {

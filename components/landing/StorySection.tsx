@@ -72,7 +72,6 @@ export function StorySection() {
     const [isPlaying, setIsPlaying] = useState(true);
     const [progress, setProgress] = useState(0);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    const [isHovered, setIsHovered] = useState(false);
     const progressIntervalRef = useRef<NodeJS.Timeout | null>(null);
     const autoAdvanceRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -113,12 +112,18 @@ export function StorySection() {
 
     // Toggle play/pause
     const togglePlayPause = useCallback(() => {
-        setIsPlaying((prev) => !prev);
+        setIsPlaying((prev) => {
+            if (!prev) {
+                // When resuming play, reset progress for clean timer
+                setProgress(0);
+            }
+            return !prev;
+        });
     }, []);
 
     // Auto-advance logic - cycles through all images in a story before moving to next
     useEffect(() => {
-        if (!isPlaying || isHovered) {
+        if (!isPlaying) {
             clearTimers();
             return;
         }
@@ -147,7 +152,7 @@ export function StorySection() {
         }, AUTO_ADVANCE_DURATION * 1000);
 
         return () => clearTimers();
-    }, [isPlaying, isHovered, currentIndex, currentImageIndex, currentStory.images.length, goToNext, clearTimers]);
+    }, [isPlaying, currentIndex, currentImageIndex, currentStory.images.length, goToNext, clearTimers]);
 
     // Keyboard navigation
     useEffect(() => {
@@ -172,8 +177,6 @@ export function StorySection() {
         <section
             id="story"
             className="relative bg-wedding-ivory min-h-screen overflow-hidden"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
         >
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-5">

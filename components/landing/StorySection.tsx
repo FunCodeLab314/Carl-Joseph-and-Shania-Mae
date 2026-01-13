@@ -25,42 +25,42 @@ const stories: Story[] = [
     {
         id: 1,
         title: "Where It All Began",
-        date: "2019",
+        date: "",
         content:
-            "We met at work, in the most ordinary way. Godfrey fell in love with Vanesa right away; Vanesa took a little longer. Three months of papansin Messenger chats followed—most of them unanswered—until one question finally landed: \"Hi Nes... Galing Mindoro yan. Kumakain ka niyan?\"",
-        images: ["/photos/1.png", "/photos/2.png"],
+            "We met at work, in the most ordinary way. Godfrey fell in love with Vanesa right away; Vanesa took a little longer. Three months of papansin Messenger chats followed—most of them unanswered—until one question finally landed: \"Hi Nes... Galing Mindoro yan. Kumakain ka niyan?\" It turns out love sometimes arrives quietly, often disguised as food.",
+        images: ["/photos/1.png"],
     },
     {
         id: 2,
-        title: "The Pursuer",
-        date: "2019 - 2020",
+        title: "Love Letters",
+        date: "",
         content:
-            "Godfrey never gave up. Every smile, every small moment became an opportunity to show his intentions. What started as casual conversations slowly turned into something more meaningful. Vanesa began to see the sincerity behind every gesture.",
-        images: ["/photos/3.png", "/photos/4.png"],
+            "Godfrey is the kind of person who still believes in handwritten letters: thoughtful, intentional, and a little old-school. Vanesa, a hopeless romantic at heart, loved this immediately. In a world of quick messages and fleeting replies, those letters made everything feel slower, deeper, and more real.",
+        images: ["/photos/2.png"],
     },
     {
         id: 3,
-        title: "Falling In Love",
-        date: "2020 - 2021",
+        title: "Our First Date",
+        date: "February 14",
         content:
-            "Time revealed what the heart already knew. Through late night talks, shared dreams, and countless adventures together, love blossomed naturally. Every day brought them closer, and what once was uncertainty became beautiful certainty.",
-        images: ["/photos/5.png", "/photos/6.png"],
+            "Our first date happened on February 14, and over time, that date became ours. It felt right to keep it.",
+        images: ["/photos/3.png", "/photos/4.png", "/photos/5.png"],
     },
     {
         id: 4,
-        title: "Building Our Forever",
-        date: "2022 - 2024",
+        title: "Opposites Attract",
+        date: "",
         content:
-            "Together through every storm and every sunshine, they built a bond unshakeable. From simple dates to life's biggest decisions, they proved that true love grows stronger with time. Every challenge became a stepping stone to forever.",
-        images: ["/photos/7.png", "/photos/8.png"],
+            "We are opposites in obvious ways. Godfrey loves football, sports, and beer; Vanesa would rather talk about pageantry, Taylor Swift, or skincare. And yet, we're also the same in many ways. We're both introverts and homebodies, happiest staying in—yet we keep choosing beach trips, despite neither of us knowing how to swim.",
+        images: ["/photos/6.png", "/photos/7.png", "/photos/8.png", "/photos/9.png"],
     },
     {
         id: 5,
         title: "Forever Starts Now",
-        date: "February 14, 2026",
+        date: "Proposed: July 14, 2025 • Wedding: February 14, 2026",
         content:
-            "And now, we stand at the beginning of our greatest adventure yet. With hearts full of love and dreams of tomorrow, we invite you to witness the start of our forever. This isn't just a wedding—it's the celebration of a love story years in the making.",
-        images: ["/photos/9.png", "/photos/10.png"],
+            "Last July 14, 2025, Godfrey proposed in the middle of the Bohol seas, witnessed only by dolphins, fish, and a very supportive bangkero. There was no easy way back to shore and no reason to say no. On February 14, 2026, we're getting married, turning a simple first date into a lifetime of adventures.",
+        images: ["/photos/10.png"],
     },
 ];
 
@@ -258,22 +258,24 @@ export function StorySection() {
                                     </div>
                                 )}
 
-                                {/* Date Badge */}
-                                <motion.div
-                                    initial={{ opacity: 0, y: -20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.3, duration: 0.5 }}
-                                    className="absolute top-4 left-4 md:top-6 md:left-6 z-20"
-                                >
-                                    <div className="bg-wedding-gold/90 backdrop-blur-sm px-4 py-2 rounded-full">
-                                        <span
-                                            className="text-wedding-charcoal text-xs md:text-sm font-semibold tracking-wider"
-                                            style={{ fontFamily: "var(--font-body)" }}
-                                        >
-                                            {currentStory.date}
-                                        </span>
-                                    </div>
-                                </motion.div>
+                                {/* Date Badge - Only show if date exists */}
+                                {currentStory.date && (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: -20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.3, duration: 0.5 }}
+                                        className="absolute top-4 left-4 md:top-6 md:left-6 z-20"
+                                    >
+                                        <div className="bg-wedding-gold/90 backdrop-blur-sm px-4 py-2 rounded-full">
+                                            <span
+                                                className="text-wedding-charcoal text-xs md:text-sm font-semibold tracking-wider"
+                                                style={{ fontFamily: "var(--font-body)" }}
+                                            >
+                                                {currentStory.date}
+                                            </span>
+                                        </div>
+                                    </motion.div>
+                                )}
 
                                 {/* Story Number */}
                                 <div className="absolute top-4 right-4 md:top-6 md:right-6 z-20">

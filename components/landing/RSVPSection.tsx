@@ -30,6 +30,7 @@ export function RSVPSection() {
     const [isLoadingInvitation, setIsLoadingInvitation] = useState(false);
     const [invitationId, setInvitationId] = useState<string | null>(null);
     const [maxGuests, setMaxGuests] = useState(2); // Default fallback
+    const [isInvitationUsed, setIsInvitationUsed] = useState(false);
 
     // Status Check State
     const [showStatusModal, setShowStatusModal] = useState(false);
@@ -54,6 +55,11 @@ export function RSVPSection() {
                 if (result.success) {
                     setInvitationId(inviteId);
                     setMaxGuests(result.maxGuests);
+
+                    if (result.status === 'responded') {
+                        setIsInvitationUsed(true);
+                    }
+
                     // Pre-fill family name if available
                     if (result.familyName) {
                         setFormData((prev) => ({
@@ -612,52 +618,79 @@ export function RSVPSection() {
                     </p>
 
                     {/* Pulsing RSVP Button */}
-                    <motion.button
-                        id="rsvp-button"
-                        onClick={() => setShowFormModal(true)}
-                        className="relative bg-wedding-red text-wedding-charcoal px-12 md:px-16 py-4 md:py-5 text-sm md:text-base tracking-[0.2em] uppercase font-bold rounded-lg shadow-xl hover:bg-wedding-darkred transition-colors flex items-center gap-3 mx-auto"
-                        style={{ fontFamily: "var(--font-body)" }}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                    >
-                        {/* Pulse Ring Animation */}
-                        <motion.span
-                            className="absolute inset-0 rounded-lg border-2 border-wedding-red"
-                            animate={{
-                                scale: [1, 1.15, 1.15],
-                                opacity: [0.8, 0, 0],
-                            }}
-                            transition={{
-                                duration: 1.5,
-                                repeat: Infinity,
-                                ease: "easeOut",
-                            }}
-                        />
-                        <motion.span
-                            className="absolute inset-0 rounded-lg border-2 border-wedding-red"
-                            animate={{
-                                scale: [1, 1.25, 1.25],
-                                opacity: [0.5, 0, 0],
-                            }}
-                            transition={{
-                                duration: 1.5,
-                                repeat: Infinity,
-                                ease: "easeOut",
-                                delay: 0.3,
-                            }}
-                        />
-                        {/* Send icon - empty space for plane to land */}
-                        <motion.span
-                            className="relative z-10 w-[18px] h-[18px] flex items-center justify-center"
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 1.5, duration: 0.5 }}
+                    <div className="relative">
+                        <motion.button
+                            id="rsvp-button"
+                            onClick={() => !isInvitationUsed && setShowFormModal(true)}
+                            disabled={isInvitationUsed}
+                            className={`relative bg-wedding-red text-wedding-charcoal px-12 md:px-16 py-4 md:py-5 text-sm md:text-base tracking-[0.2em] uppercase font-bold rounded-lg shadow-xl transition-all flex items-center gap-3 mx-auto ${isInvitationUsed
+                                    ? "opacity-50 cursor-not-allowed grayscale"
+                                    : "hover:bg-wedding-darkred"
+                                }`}
+                            style={{ fontFamily: "var(--font-body)" }}
+                            whileHover={!isInvitationUsed ? { scale: 1.05 } : {}}
+                            whileTap={!isInvitationUsed ? { scale: 0.95 } : {}}
                         >
-                            <Send size={18} style={{ transform: "rotate(-45deg)" }} />
-                        </motion.span>
-                        <span className="relative z-10">Respond Now</span>
-                    </motion.button>
+                            {/* Pulse Ring Animation - Only if not used */}
+                            {!isInvitationUsed && (
+                                <>
+                                    <motion.span
+                                        className="absolute inset-0 rounded-lg border-2 border-wedding-red"
+                                        animate={{
+                                            scale: [1, 1.15, 1.15],
+                                            opacity: [0.8, 0, 0],
+                                        }}
+                                        transition={{
+                                            duration: 1.5,
+                                            repeat: Infinity,
+                                            ease: "easeOut",
+                                        }}
+                                    />
+                                    <motion.span
+                                        className="absolute inset-0 rounded-lg border-2 border-wedding-red"
+                                        animate={{
+                                            scale: [1, 1.25, 1.25],
+                                            opacity: [0.5, 0, 0],
+                                        }}
+                                        transition={{
+                                            duration: 1.5,
+                                            repeat: Infinity,
+                                            ease: "easeOut",
+                                            delay: 0.3,
+                                        }}
+                                    />
+                                </>
+                            )}
+
+                            {/* Send icon - empty space for plane to land */}
+                            <motion.span
+                                className="relative z-10 w-[18px] h-[18px] flex items-center justify-center"
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 1.5, duration: 0.5 }}
+                            >
+                                <Send size={18} style={{ transform: "rotate(-45deg)" }} />
+                            </motion.span>
+                            <span className="relative z-10">
+                                {isInvitationUsed ? "Invitation Used" : "Respond Now"}
+                            </span>
+                        </motion.button>
+
+                        {/* Used Invitation Warning */}
+                        {isInvitationUsed && (
+                            <motion.div
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                className="mt-6 p-4 bg-wedding-red/10 border border-wedding-red/30 rounded-lg max-w-md mx-auto backdrop-blur-sm"
+                            >
+                                <p className="text-wedding-champagne/90 text-sm flex flex-col md:flex-row items-center justify-center gap-2 text-center">
+                                    <AlertCircle size={16} className="text-wedding-red shrink-0" />
+                                    <span>This invitation has already been used. Please contact the couple if you need to change your response.</span>
+                                </p>
+                            </motion.div>
+                        )}
+                    </div>
 
                     {/* Check Status Link */}
                     <motion.div

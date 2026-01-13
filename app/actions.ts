@@ -14,6 +14,7 @@ interface InvitationData {
     success: boolean;
     familyName: string | null;
     maxGuests: number;
+    status: string | null;
     error?: string;
 }
 
@@ -24,13 +25,14 @@ export async function getInvitationData(inviteId: string): Promise<InvitationDat
                 success: false,
                 familyName: null,
                 maxGuests: 2,
+                status: null,
                 error: "Invalid invitation ID.",
             };
         }
 
         const { data, error } = await supabase
             .from("invitations")
-            .select("family_name, max_guests")
+            .select("family_name, max_guests, status")
             .eq("id", inviteId.trim())
             .single();
 
@@ -40,6 +42,7 @@ export async function getInvitationData(inviteId: string): Promise<InvitationDat
                 success: false,
                 familyName: null,
                 maxGuests: 2,
+                status: null,
                 error: "Invitation not found.",
             };
         }
@@ -48,6 +51,7 @@ export async function getInvitationData(inviteId: string): Promise<InvitationDat
             success: true,
             familyName: data.family_name || null,
             maxGuests: data.max_guests || 2,
+            status: data.status,
         };
     } catch (error) {
         console.error("Get Invitation Data Error:", error);
@@ -55,6 +59,7 @@ export async function getInvitationData(inviteId: string): Promise<InvitationDat
             success: false,
             familyName: null,
             maxGuests: 2,
+            status: null,
             error: "An unexpected error occurred.",
         };
     }
@@ -187,6 +192,19 @@ export async function submitRSVP(formData: FormData): Promise<SubmitRSVPResult> 
                 success: false,
                 message: "Failed to save your RSVP. Please try again.",
             };
+        }
+
+        // Step B.2: Lock the invitation if successful
+        if (invitationId && invitationId.trim()) {
+            const { error: updateError } = await supabase
+                .from("invitations")
+                .update({ status: "responded" })
+                .eq("id", invitationId.trim());
+
+            if (updateError) {
+                console.error("Failed to update invitation status:", updateError);
+                // We don't fail the request here as the RSVP is already saved
+            }
         }
 
         // Step C: Send confirmation email

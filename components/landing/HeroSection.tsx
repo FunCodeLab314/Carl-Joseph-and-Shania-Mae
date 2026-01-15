@@ -16,8 +16,8 @@ export function HeroSection() {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     const hashtags = [
-        "#NESAtamangraonasGODFREY",
-        "#ForeverHappINESsniNARDS",
+        "#NESAtamangtaonasiGODFREY",
+        "#ForeverHappiNESniNARDS",
         "#ELLAveyou14nityGODFREY",
     ];
 

@@ -59,14 +59,6 @@ export function RSVPSection() {
                     if (result.status === 'responded') {
                         setIsInvitationUsed(true);
                     }
-
-                    // Pre-fill family name if available
-                    if (result.familyName) {
-                        setFormData((prev) => ({
-                            ...prev,
-                            name: result.familyName!,
-                        }));
-                    }
                 } else {
                     // Invalid invitation - use defaults
                     console.warn("Invalid invitation:", result.error);

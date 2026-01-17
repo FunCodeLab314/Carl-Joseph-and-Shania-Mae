@@ -214,7 +214,7 @@ export function RSVPSection() {
                                         className="text-wedding-champagne/80 text-sm"
                                         style={{ fontFamily: "var(--font-body)" }}
                                     >
-                                        Please respond by January 15, 2026
+                                        Please respond by January 31, 2026
                                     </p>
                                     {/* Loading invitation indicator */}
                                     {isLoadingInvitation && (

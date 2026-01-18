@@ -32,6 +32,7 @@ export function RSVPSection() {
     const [invitationId, setInvitationId] = useState<string | null>(null);
     const [maxGuests, setMaxGuests] = useState(2); // Default fallback
     const [isInvitationUsed, setIsInvitationUsed] = useState(false);
+    const [showWarningModal, setShowWarningModal] = useState(false);
 
     // Status Check State
     const [showStatusModal, setShowStatusModal] = useState(false);
@@ -194,6 +195,88 @@ export function RSVPSection() {
                 showConfetti={showConfetti}
             />
 
+            {/* Warning Modal - Shows before RSVP form */}
+            <AnimatePresence>
+                {showWarningModal && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-50 flex items-center justify-center p-4"
+                        onClick={() => setShowWarningModal(false)}
+                    >
+                        <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9, y: 30 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.9, y: 30 }}
+                            className="relative z-10 w-full max-w-md bg-wedding-charcoal border border-wedding-red/40 rounded-xl p-6 md:p-8"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            {/* Warning Icon */}
+                            <div className="flex justify-center mb-4">
+                                <div className="w-16 h-16 rounded-full bg-wedding-red/20 flex items-center justify-center">
+                                    <AlertCircle className="text-wedding-red" size={32} />
+                                </div>
+                            </div>
+
+                            {/* Title */}
+                            <h3
+                                className="text-wedding-ivory text-xl md:text-2xl text-center mb-4"
+                                style={{ fontFamily: "var(--font-display)" }}
+                            >
+                                Before You Continue
+                            </h3>
+
+                            {/* Message */}
+                            <div className="space-y-3 mb-6">
+                                <p
+                                    className="text-wedding-champagne/90 text-sm text-center leading-relaxed"
+                                    style={{ fontFamily: "var(--font-body)" }}
+                                >
+                                    This invitation link is <span className="text-wedding-red font-semibold">exclusively for you</span>.
+                                </p>
+                                <div className="bg-wedding-red/10 border border-wedding-red/30 rounded-lg p-4">
+                                    <p
+                                        className="text-wedding-champagne text-xs text-center leading-relaxed"
+                                        style={{ fontFamily: "var(--font-body)" }}
+                                    >
+                                        ⚠️ <strong>Please do not share this link.</strong> If someone else submits using your link first, you won&apos;t be able to send your RSVP.
+                                    </p>
+                                </div>
+                                <p
+                                    className="text-wedding-champagne/70 text-xs text-center"
+                                    style={{ fontFamily: "var(--font-body)" }}
+                                >
+                                    This link can only be used once.
+                                </p>
+                            </div>
+
+                            {/* Buttons */}
+                            <div className="flex gap-3">
+                                <button
+                                    onClick={() => setShowWarningModal(false)}
+                                    className="flex-1 py-3 px-4 border border-wedding-champagne/30 text-wedding-champagne/70 rounded-lg text-sm hover:bg-wedding-champagne/10 transition-colors"
+                                    style={{ fontFamily: "var(--font-body)" }}
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        setShowWarningModal(false);
+                                        setShowFormModal(true);
+                                    }}
+                                    className="flex-1 py-3 px-4 bg-wedding-red text-wedding-charcoal rounded-lg text-sm font-bold hover:bg-wedding-darkred transition-colors"
+                                    style={{ fontFamily: "var(--font-body)" }}
+                                >
+                                    I Understand
+                                </button>
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
             {/* RSVP Form Modal */}
             <AnimatePresence>
                 {showFormModal && (
@@ -240,6 +323,17 @@ export function RSVPSection() {
                                     >
                                         Please respond by January 31, 2026
                                     </p>
+                                    {/* Seat allocation notification */}
+                                    {invitationId && maxGuests > 0 && (
+                                        <div className="mt-3 px-4 py-2 bg-wedding-red/10 border border-wedding-red/30 rounded-lg inline-block">
+                                            <p
+                                                className="text-wedding-champagne text-xs"
+                                                style={{ fontFamily: "var(--font-body)" }}
+                                            >
+                                                🎟️ We have allotted <span className="text-wedding-red font-semibold">{maxGuests} {maxGuests === 1 ? 'seat' : 'seats'}</span> for you
+                                            </p>
+                                        </div>
+                                    )}
                                     {/* Loading invitation indicator */}
                                     {isLoadingInvitation && (
                                         <div className="flex items-center justify-center gap-2 mt-3">
@@ -647,7 +741,7 @@ export function RSVPSection() {
                     <div className="relative">
                         <motion.button
                             id="rsvp-button"
-                            onClick={() => !isInvitationUsed && setShowFormModal(true)}
+                            onClick={() => !isInvitationUsed && setShowWarningModal(true)}
                             disabled={isInvitationUsed}
                             className={`relative bg-wedding-red text-wedding-charcoal px-12 md:px-16 py-4 md:py-5 text-sm md:text-base tracking-[0.2em] uppercase font-bold rounded-lg shadow-xl transition-all flex items-center gap-3 mx-auto ${isInvitationUsed
                                 ? "opacity-50 cursor-not-allowed grayscale"

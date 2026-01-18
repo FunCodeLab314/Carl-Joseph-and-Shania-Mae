@@ -217,15 +217,18 @@ export async function submitRSVP(formData: FormData): Promise<SubmitRSVPResult> 
 
         // Step B.2: Lock the invitation if successful
         if (invitationId && invitationId.trim()) {
-            console.log("Locking invitation:", invitationId);
-            const { error: updateError } = await supabase
+            console.log("Attempting to lock invitation:", invitationId.trim());
+            const { data: updateData, error: updateError } = await supabase
                 .from("invitations")
                 .update({ status: "responded" })
-                .eq("id", invitationId.trim());
+                .eq("id", invitationId.trim())
+                .select();
 
             if (updateError) {
                 console.error("Failed to update invitation status:", updateError);
                 // We don't fail the request here as the RSVP is already saved
+            } else {
+                console.log("Invitation status update result:", updateData);
             }
         }
 

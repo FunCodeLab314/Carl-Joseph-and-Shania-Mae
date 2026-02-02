@@ -45,7 +45,7 @@ export function GallerySection() {
     const handleMouseLeave = () => setIsAutoPlaying(true);
 
     return (
-        <section id="gallery" className="bg-wedding-ivory py-16 md:py-24 lg:py-32 overflow-hidden">
+        <section id="gallery" className="bg-wedding-black py-16 md:py-24 lg:py-32 overflow-hidden">
             {/* Header */}
             <motion.div
                 className="text-center mb-12 md:mb-16 px-6"
@@ -55,19 +55,19 @@ export function GallerySection() {
                 transition={{ duration: 0.8 }}
             >
                 <p
-                    className="text-wedding-red text-xs tracking-[0.3em] mb-4"
+                    className="text-wedding-burgundy text-xs tracking-[0.3em] mb-4"
                     style={{ fontFamily: "var(--font-body)" }}
                 >
                     MOMENTS
                 </p>
                 <h2
                     id="gallery-title"
-                    className="text-wedding-charcoal text-3xl md:text-4xl lg:text-5xl mb-8"
+                    className="text-wedding-gold text-3xl md:text-4xl lg:text-5xl mb-8"
                     style={{ fontFamily: "var(--font-heading)" }}
                 >
                     Our Gallery
                 </h2>
-                <div className="w-16 h-[1px] bg-wedding-red mx-auto" />
+                <div className="w-16 h-[1px] bg-wedding-burgundy mx-auto" />
             </motion.div>
 
             {/* Gallery Carousel */}
@@ -81,7 +81,7 @@ export function GallerySection() {
                 onMouseLeave={handleMouseLeave}
             >
                 {/* Main Image Display */}
-                <div className="relative aspect-[4/3] md:aspect-[16/10] rounded-xl overflow-hidden bg-wedding-cream border border-wedding-red/20">
+                <div className="relative aspect-[4/3] md:aspect-[16/10] rounded-xl overflow-hidden bg-wedding-jet border border-wedding-gold/20">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={currentIndex}
@@ -93,8 +93,8 @@ export function GallerySection() {
                         >
                             {galleryImages[currentIndex].isPlaceholder ? (
                                 // Placeholder
-                                <div className="w-full h-full flex flex-col items-center justify-center bg-wedding-cream">
-                                    <ImageIcon className="text-wedding-red/30 mb-4" size={64} />
+                                <div className="w-full h-full flex flex-col items-center justify-center bg-wedding-jet">
+                                    <ImageIcon className="text-wedding-burgundy/30 mb-4" size={64} />
                                     <p
                                         className="text-wedding-dove italic text-lg"
                                         style={{ fontFamily: "var(--font-heading)" }}
@@ -116,21 +116,21 @@ export function GallerySection() {
                     {/* Navigation Arrows */}
                     <button
                         onClick={prevSlide}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-wedding-charcoal p-2 rounded-full shadow-lg transition-all"
+                        className="absolute left-4 top-1/2 -translate-y-1/2 bg-wedding-pearl/80 hover:bg-wedding-pearl text-wedding-charcoal p-2 rounded-full shadow-lg transition-all"
                         aria-label="Previous image"
                     >
                         <ChevronLeft size={24} />
                     </button>
                     <button
                         onClick={nextSlide}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-wedding-charcoal p-2 rounded-full shadow-lg transition-all"
+                        className="absolute right-4 top-1/2 -translate-y-1/2 bg-wedding-pearl/80 hover:bg-wedding-pearl text-wedding-charcoal p-2 rounded-full shadow-lg transition-all"
                         aria-label="Next image"
                     >
                         <ChevronRight size={24} />
                     </button>
 
                     {/* Image Counter */}
-                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-wedding-black/70 text-wedding-gold px-3 py-1 rounded-full text-sm">
                         {currentIndex + 1} / {galleryImages.length}
                     </div>
                 </div>
@@ -142,8 +142,8 @@ export function GallerySection() {
                             key={index}
                             onClick={() => setCurrentIndex(index)}
                             className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentIndex
-                                ? "bg-wedding-red w-6"
-                                : "bg-wedding-red/30 hover:bg-wedding-red/60"
+                                ? "bg-wedding-burgundy w-6"
+                                : "bg-wedding-burgundy/30 hover:bg-wedding-burgundy/60"
                                 }`}
                             aria-label={`Go to image ${index + 1}`}
                         />
@@ -157,13 +157,13 @@ export function GallerySection() {
                             key={index}
                             onClick={() => setCurrentIndex(index)}
                             className={`flex-shrink-0 w-16 h-12 rounded-lg overflow-hidden border-2 transition-all ${index === currentIndex
-                                ? "border-wedding-red"
+                                ? "border-wedding-gold"
                                 : "border-transparent opacity-60 hover:opacity-100"
                                 }`}
                         >
                             {image.isPlaceholder ? (
-                                <div className="w-full h-full bg-wedding-cream flex items-center justify-center">
-                                    <ImageIcon className="text-wedding-red/30" size={16} />
+                                <div className="w-full h-full bg-wedding-jet flex items-center justify-center">
+                                    <ImageIcon className="text-wedding-burgundy/30" size={16} />
                                 </div>
                             ) : (
                                 <img

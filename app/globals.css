@@ -1,36 +1,48 @@
 @import "tailwindcss";
 
 /* Wedding Theme Configuration - Tailwind v4 */
+/* Black, Burgundy, Gold Theme */
 @theme inline {
   /* Typography */
   --font-display: var(--font-display);
   --font-heading: var(--font-heading);
   --font-body: var(--font-body);
 
-  /* Primary Background Tones */
-  --color-wedding-ivory: #FFFDF7;
-  --color-wedding-cream: #FAF7F2;
-  --color-wedding-blush: #F8F3EF;
+  /* Primary Dark Tones */
+  --color-wedding-black: #0A0A0A;
+  --color-wedding-jet: #1A1A1A;
+  --color-wedding-charcoal: #2B2B2B;
 
-  /* Gold Accent Spectrum */
+  /* Burgundy Spectrum */
+  --color-wedding-burgundy: #800020;
+  --color-wedding-wine: #722F37;
+  --color-wedding-maroon: #6B1C23;
+  --color-wedding-burgundy-light: #A0293A;
+  --color-wedding-burgundy-dark: #5C0014;
+
+  /* Gold Spectrum */
+  --color-wedding-gold: #D4AF37;
+  --color-wedding-gold-light: #E8C547;
+  --color-wedding-gold-dark: #B8941F;
   --color-wedding-champagne: #F7E7CE;
-  --color-wedding-gold: #D4AF6F;
   --color-wedding-antique: #C5A572;
 
-  /* Red Accent Spectrum */
-  --color-wedding-red: #C41E3A;
-  --color-wedding-darkred: #8B0000;
-  --color-wedding-lightred: #E57373;
+  /* Light Neutrals (for contrast sections) */
+  --color-wedding-ivory: #FFFDF7;
+  --color-wedding-cream: #FAF7F2;
+  --color-wedding-pearl: #F5F5F0;
+  --color-wedding-blush: #F8F3EF;
 
-  /* Text & Charcoal Tones */
-  --color-wedding-charcoal: #2B2B2B;
+  /* Text Tones */
   --color-wedding-slate: #4A4A4A;
   --color-wedding-dove: #6B6B6B;
 
-  /* Romantic Accents */
+  /* Legacy support (mapped to new colors) */
+  --color-wedding-red: #800020;
+  --color-wedding-darkred: #5C0014;
+  --color-wedding-lightred: #A0293A;
   --color-wedding-rose: #E8D5D0;
   --color-wedding-sage: #D4D9D0;
-  --color-wedding-pearl: #F5F5F0;
 
   /* Theme Colors (Dress Code) */
   --color-wedding-pink: #E8C4C4;
@@ -45,8 +57,8 @@ html {
 }
 
 body {
-  background-color: var(--color-wedding-ivory);
-  color: var(--color-wedding-charcoal);
+  background-color: var(--color-wedding-black);
+  color: var(--color-wedding-pearl);
   font-family: var(--font-body), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -54,8 +66,8 @@ body {
 
 /* Custom Selection */
 ::selection {
-  background-color: var(--color-wedding-champagne);
-  color: var(--color-wedding-charcoal);
+  background-color: var(--color-wedding-burgundy);
+  color: var(--color-wedding-gold);
 }
 
 /* Smooth scrolling for anchor links */
@@ -69,16 +81,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-wedding-cream);
+  background: var(--color-wedding-jet);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-wedding-red);
+  background: var(--color-wedding-burgundy);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-wedding-darkred);
+  background: var(--color-wedding-burgundy-dark);
 }
 
 /* Modal scrollbar - hidden but still scrollable */
@@ -92,4 +104,21 @@ body {
 .modal-scroll::-webkit-scrollbar {
   display: none;
   /* Chrome, Safari and Opera */
+}
+
+/* Heart Grid Layout for Story Section */
+.heart-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 8px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+@media (max-width: 640px) {
+  .heart-grid {
+    max-width: 300px;
+    gap: 4px;
+  }
 }

@@ -32,7 +32,7 @@ export function EntourageSection() {
     ];
 
     return (
-        <section id="entourage" className="bg-wedding-blush">
+        <section id="entourage" className="bg-wedding-jet">
             <div className="max-w-6xl mx-auto px-6 py-16 md:py-24 lg:py-32">
                 {/* Header */}
                 <motion.div
@@ -43,19 +43,19 @@ export function EntourageSection() {
                     transition={{ duration: 0.8 }}
                 >
                     <p
-                        className="text-wedding-red text-xs tracking-[0.3em] mb-4"
+                        className="text-wedding-burgundy text-xs tracking-[0.3em] mb-4"
                         style={{ fontFamily: "var(--font-body)" }}
                     >
                         OUR ENTOURAGE
                     </p>
                     <h2
                         id="entourage-title"
-                        className="text-wedding-charcoal text-4xl md:text-5xl lg:text-6xl mb-8"
+                        className="text-wedding-gold text-4xl md:text-5xl lg:text-6xl mb-8"
                         style={{ fontFamily: "var(--font-heading)" }}
                     >
                         Those Who Stand With Us
                     </h2>
-                    <div className="w-16 h-[1px] bg-wedding-red mx-auto" />
+                    <div className="w-16 h-[1px] bg-wedding-burgundy mx-auto" />
                 </motion.div>
 
                 {/* Parents */}
@@ -68,54 +68,54 @@ export function EntourageSection() {
                 >
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                         {/* Bride's Parents */}
-                        <div className="text-center bg-wedding-ivory/50 rounded-xl p-6">
+                        <div className="text-center bg-wedding-charcoal/50 rounded-xl p-6 border border-wedding-gold/10">
                             <p
-                                className="text-wedding-red text-xs tracking-[0.2em] uppercase mb-4"
+                                className="text-wedding-burgundy text-xs tracking-[0.2em] uppercase mb-4"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
                                 Bride&apos;s Parents
                             </p>
                             <p
-                                className="text-wedding-charcoal text-base md:text-lg"
+                                className="text-wedding-pearl text-base md:text-lg"
                                 style={{ fontFamily: "var(--font-heading)" }}
                             >
                                 Mr. Socrates Tundag
                             </p>
                             <p
-                                className="text-wedding-slate text-sm"
+                                className="text-wedding-gold text-sm"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
                                 &
                             </p>
                             <p
-                                className="text-wedding-charcoal text-base md:text-lg"
+                                className="text-wedding-pearl text-base md:text-lg"
                                 style={{ fontFamily: "var(--font-heading)" }}
                             >
                                 Mrs. Ma. Cecilia Patelo Tundag
                             </p>
                         </div>
                         {/* Groom's Parents */}
-                        <div className="text-center bg-wedding-ivory/50 rounded-xl p-6">
+                        <div className="text-center bg-wedding-charcoal/50 rounded-xl p-6 border border-wedding-gold/10">
                             <p
-                                className="text-wedding-red text-xs tracking-[0.2em] uppercase mb-4"
+                                className="text-wedding-burgundy text-xs tracking-[0.2em] uppercase mb-4"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
                                 Groom&apos;s Parents
                             </p>
                             <p
-                                className="text-wedding-charcoal text-base md:text-lg"
+                                className="text-wedding-pearl text-base md:text-lg"
                                 style={{ fontFamily: "var(--font-heading)" }}
                             >
                                 Mr. Rogelio Deytiquez
                             </p>
                             <p
-                                className="text-wedding-slate text-sm"
+                                className="text-wedding-gold text-sm"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
                                 &
                             </p>
                             <p
-                                className="text-wedding-charcoal text-base md:text-lg"
+                                className="text-wedding-pearl text-base md:text-lg"
                                 style={{ fontFamily: "var(--font-heading)" }}
                             >
                                 Mrs. Marichu Cuevas Deytiquez
@@ -133,7 +133,7 @@ export function EntourageSection() {
                     transition={{ duration: 0.6 }}
                 >
                     <h3
-                        className="text-wedding-charcoal text-2xl md:text-3xl text-center mb-8"
+                        className="text-wedding-gold text-2xl md:text-3xl text-center mb-8"
                         style={{ fontFamily: "var(--font-heading)" }}
                     >
                         Principal Sponsors
@@ -145,14 +145,14 @@ export function EntourageSection() {
                                 className="flex items-center justify-center gap-3 text-center py-2"
                             >
                                 <p
-                                    className="text-wedding-slate text-sm md:text-base"
+                                    className="text-wedding-pearl text-sm md:text-base"
                                     style={{ fontFamily: "var(--font-body)" }}
                                 >
                                     {pair.male}
                                 </p>
-                                <span className="text-wedding-red">&</span>
+                                <span className="text-wedding-gold">&</span>
                                 <p
-                                    className="text-wedding-slate text-sm md:text-base"
+                                    className="text-wedding-pearl text-sm md:text-base"
                                     style={{ fontFamily: "var(--font-body)" }}
                                 >
                                     {pair.female}
@@ -171,7 +171,7 @@ export function EntourageSection() {
                     transition={{ duration: 0.6 }}
                 >
                     <h3
-                        className="text-wedding-charcoal text-xl md:text-2xl text-center mb-8"
+                        className="text-wedding-gold text-xl md:text-2xl text-center mb-8"
                         style={{ fontFamily: "var(--font-heading)" }}
                     >
                         Best Men & Maids of Honor
@@ -179,14 +179,14 @@ export function EntourageSection() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
                         <div className="text-center">
                             <p
-                                className="text-wedding-red text-xs tracking-[0.2em] uppercase mb-3"
+                                className="text-wedding-burgundy text-xs tracking-[0.2em] uppercase mb-3"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
                                 Best Men
                             </p>
                             <div className="space-y-2">
                                 {bestMenMaidsOfHonor.map((pair, index) => (
-                                    <p key={index} className="text-wedding-slate text-sm" style={{ fontFamily: "var(--font-body)" }}>
+                                    <p key={index} className="text-wedding-pearl text-sm" style={{ fontFamily: "var(--font-body)" }}>
                                         {pair.male}
                                     </p>
                                 ))}
@@ -194,14 +194,14 @@ export function EntourageSection() {
                         </div>
                         <div className="text-center">
                             <p
-                                className="text-wedding-red text-xs tracking-[0.2em] uppercase mb-3"
+                                className="text-wedding-burgundy text-xs tracking-[0.2em] uppercase mb-3"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
                                 Maids of Honor
                             </p>
                             <div className="space-y-2">
                                 {bestMenMaidsOfHonor.filter(p => p.female).map((pair, index) => (
-                                    <p key={index} className="text-wedding-slate text-sm" style={{ fontFamily: "var(--font-body)" }}>
+                                    <p key={index} className="text-wedding-pearl text-sm" style={{ fontFamily: "var(--font-body)" }}>
                                         {pair.female}
                                     </p>
                                 ))}
@@ -219,7 +219,7 @@ export function EntourageSection() {
                     transition={{ duration: 0.6 }}
                 >
                     <h3
-                        className="text-wedding-charcoal text-xl md:text-2xl text-center mb-2"
+                        className="text-wedding-gold text-xl md:text-2xl text-center mb-2"
                         style={{ fontFamily: "var(--font-heading)" }}
                     >
                         Secondary Sponsors
@@ -233,19 +233,19 @@ export function EntourageSection() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
                         <div className="text-center">
                             <p
-                                className="text-wedding-red text-xs tracking-[0.2em] uppercase mb-3"
+                                className="text-wedding-burgundy text-xs tracking-[0.2em] uppercase mb-3"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
                                 Candle
                             </p>
                             <p
-                                className="text-wedding-slate text-sm"
+                                className="text-wedding-pearl text-sm"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
                                 Charlie Magne Lucero
                             </p>
                             <p
-                                className="text-wedding-slate text-sm"
+                                className="text-wedding-pearl text-sm"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
                                 Marvilyn Torres
@@ -253,19 +253,19 @@ export function EntourageSection() {
                         </div>
                         <div className="text-center">
                             <p
-                                className="text-wedding-red text-xs tracking-[0.2em] uppercase mb-3"
+                                className="text-wedding-burgundy text-xs tracking-[0.2em] uppercase mb-3"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
                                 Veil
                             </p>
                             <p
-                                className="text-wedding-slate text-sm"
+                                className="text-wedding-pearl text-sm"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
                                 Arnaldo Sodario
                             </p>
                             <p
-                                className="text-wedding-slate text-sm"
+                                className="text-wedding-pearl text-sm"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
                                 Tricia Mae Datus
@@ -273,19 +273,19 @@ export function EntourageSection() {
                         </div>
                         <div className="text-center">
                             <p
-                                className="text-wedding-red text-xs tracking-[0.2em] uppercase mb-3"
+                                className="text-wedding-burgundy text-xs tracking-[0.2em] uppercase mb-3"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
                                 Cord
                             </p>
                             <p
-                                className="text-wedding-slate text-sm"
+                                className="text-wedding-pearl text-sm"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
                                 Leonard Bobadilla
                             </p>
                             <p
-                                className="text-wedding-slate text-sm"
+                                className="text-wedding-pearl text-sm"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
                                 Marjorie Xina Baltazar
@@ -305,27 +305,27 @@ export function EntourageSection() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
                         <div className="text-center">
                             <p
-                                className="text-wedding-red text-xs tracking-[0.2em] uppercase mb-4"
+                                className="text-wedding-burgundy text-xs tracking-[0.2em] uppercase mb-4"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
                                 Bridesmaids
                             </p>
                             <div className="space-y-2">
                                 {bridesmaidsGroomsmen.map((pair, index) => (
-                                    <p key={index} className="text-wedding-slate text-sm" style={{ fontFamily: "var(--font-body)" }}>{pair.female}</p>
+                                    <p key={index} className="text-wedding-pearl text-sm" style={{ fontFamily: "var(--font-body)" }}>{pair.female}</p>
                                 ))}
                             </div>
                         </div>
                         <div className="text-center">
                             <p
-                                className="text-wedding-red text-xs tracking-[0.2em] uppercase mb-4"
+                                className="text-wedding-burgundy text-xs tracking-[0.2em] uppercase mb-4"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
                                 Groomsmen
                             </p>
                             <div className="space-y-2">
                                 {bridesmaidsGroomsmen.map((pair, index) => (
-                                    <p key={index} className="text-wedding-slate text-sm" style={{ fontFamily: "var(--font-body)" }}>{pair.male}</p>
+                                    <p key={index} className="text-wedding-pearl text-sm" style={{ fontFamily: "var(--font-body)" }}>{pair.male}</p>
                                 ))}
                             </div>
                         </div>
@@ -343,40 +343,40 @@ export function EntourageSection() {
                         {/* Flower Girls */}
                         <div className="text-center">
                             <p
-                                className="text-wedding-red text-xs tracking-[0.2em] uppercase mb-4"
+                                className="text-wedding-burgundy text-xs tracking-[0.2em] uppercase mb-4"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
                                 Flower Girls & Little Bride
                             </p>
                             <div className="space-y-2">
-                                <p className="text-wedding-slate text-sm" style={{ fontFamily: "var(--font-body)" }}>
-                                    <span className="text-wedding-dove">Little Bride:</span> Maeve Kai&apos;sa Deytiquez
+                                <p className="text-wedding-pearl text-sm" style={{ fontFamily: "var(--font-body)" }}>
+                                    <span className="text-wedding-gold">Little Bride:</span> Maeve Kai&apos;sa Deytiquez
                                 </p>
-                                <p className="text-wedding-slate text-sm" style={{ fontFamily: "var(--font-body)" }}>Erica Cando</p>
-                                <p className="text-wedding-slate text-sm" style={{ fontFamily: "var(--font-body)" }}>Roma De Guzman</p>
-                                <p className="text-wedding-slate text-sm" style={{ fontFamily: "var(--font-body)" }}>Jen-jen Dimla</p>
+                                <p className="text-wedding-pearl text-sm" style={{ fontFamily: "var(--font-body)" }}>Erica Cando</p>
+                                <p className="text-wedding-pearl text-sm" style={{ fontFamily: "var(--font-body)" }}>Roma De Guzman</p>
+                                <p className="text-wedding-pearl text-sm" style={{ fontFamily: "var(--font-body)" }}>Jen-jen Dimla</p>
                             </div>
                         </div>
                         {/* Bearers */}
                         <div className="text-center">
                             <p
-                                className="text-wedding-red text-xs tracking-[0.2em] uppercase mb-4"
+                                className="text-wedding-burgundy text-xs tracking-[0.2em] uppercase mb-4"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
                                 Bearers & Little Groom
                             </p>
                             <div className="space-y-2">
-                                <p className="text-wedding-slate text-sm" style={{ fontFamily: "var(--font-body)" }}>
-                                    <span className="text-wedding-dove">Little Groom:</span> Shanlee Ezekiel Tundag
+                                <p className="text-wedding-pearl text-sm" style={{ fontFamily: "var(--font-body)" }}>
+                                    <span className="text-wedding-gold">Little Groom:</span> Shanlee Ezekiel Tundag
                                 </p>
-                                <p className="text-wedding-slate text-sm" style={{ fontFamily: "var(--font-body)" }}>
-                                    <span className="text-wedding-dove">Ring:</span> Chester Carvajal
+                                <p className="text-wedding-pearl text-sm" style={{ fontFamily: "var(--font-body)" }}>
+                                    <span className="text-wedding-gold">Ring:</span> Chester Carvajal
                                 </p>
-                                <p className="text-wedding-slate text-sm" style={{ fontFamily: "var(--font-body)" }}>
-                                    <span className="text-wedding-dove">Bible:</span> Marco Cholo De Leon
+                                <p className="text-wedding-pearl text-sm" style={{ fontFamily: "var(--font-body)" }}>
+                                    <span className="text-wedding-gold">Bible:</span> Marco Cholo De Leon
                                 </p>
-                                <p className="text-wedding-slate text-sm" style={{ fontFamily: "var(--font-body)" }}>
-                                    <span className="text-wedding-dove">Coin:</span> Sonny Fajardo
+                                <p className="text-wedding-pearl text-sm" style={{ fontFamily: "var(--font-body)" }}>
+                                    <span className="text-wedding-gold">Coin:</span> Sonny Fajardo
                                 </p>
                             </div>
                         </div>

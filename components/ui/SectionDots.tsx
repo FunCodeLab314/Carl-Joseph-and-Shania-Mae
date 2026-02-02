@@ -55,15 +55,15 @@ export function SectionDots() {
                     aria-label={`Go to ${section.label}`}
                 >
                     {/* Label on hover */}
-                    <span className="absolute right-6 px-2 py-1 bg-wedding-charcoal/80 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                    <span className="absolute right-6 px-2 py-1 bg-wedding-jet/90 text-wedding-pearl text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-wedding-gold/20">
                         {section.label}
                     </span>
 
                     {/* Dot */}
                     <motion.div
                         className={`w-2.5 h-2.5 rounded-full border-2 transition-all duration-300 ${activeSection === section.id
-                            ? "bg-wedding-red border-wedding-red scale-125"
-                            : "bg-transparent border-wedding-red/40 hover:border-wedding-red"
+                            ? "bg-wedding-burgundy border-wedding-burgundy scale-125"
+                            : "bg-transparent border-wedding-gold/40 hover:border-wedding-gold"
                             }`}
                         animate={{
                             scale: activeSection === section.id ? 1.3 : 1,

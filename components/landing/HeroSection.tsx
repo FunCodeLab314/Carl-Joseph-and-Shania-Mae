@@ -25,7 +25,7 @@ export function HeroSection() {
 
     return (
         <>
-            <section id="home" className="relative h-screen w-full overflow-hidden bg-[#1a1a1a]">
+            <section id="home" className="relative h-screen w-full overflow-hidden bg-wedding-black">
                 {/* Background Placeholder */}
                 <PlaceholderImage
                     className="absolute inset-0 w-full h-full"
@@ -37,7 +37,7 @@ export function HeroSection() {
                 <div
                     className="absolute inset-0"
                     style={{
-                        background: "linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.7) 100%)"
+                        background: "linear-gradient(180deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.5) 50%, rgba(10,10,10,0.8) 100%)"
                     }}
                 />
 
@@ -48,7 +48,7 @@ export function HeroSection() {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2, duration: 0.8 }}
-                        className="text-white/80 text-xs md:text-sm tracking-[0.2em] md:tracking-[0.3em] uppercase mb-6 font-light"
+                        className="text-wedding-gold/80 text-xs md:text-sm tracking-[0.2em] md:tracking-[0.3em] uppercase mb-6 font-light"
                         style={{ fontFamily: "var(--font-body)" }}
                     >
                         JUNE 20, 2026
@@ -59,11 +59,11 @@ export function HeroSection() {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.5, duration: 0.8 }}
-                        className="text-white text-4xl md:text-6xl lg:text-8xl tracking-tight mb-4 font-light"
+                        className="text-wedding-pearl text-4xl md:text-6xl lg:text-8xl tracking-tight mb-4 font-light"
                         style={{ fontFamily: "var(--font-display)" }}
                     >
                         Carl Joseph{" "}
-                        <span className="text-[#DC2626] inline-block mx-2 md:mx-4">&</span>{" "}
+                        <span className="text-wedding-burgundy inline-block mx-2 md:mx-4">&</span>{" "}
                         Shania Mae
                     </motion.h1>
 
@@ -72,7 +72,7 @@ export function HeroSection() {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.8, duration: 0.8 }}
-                        className="text-white/90 text-base md:text-lg lg:text-xl italic font-light max-w-2xl mb-2"
+                        className="text-wedding-pearl/90 text-base md:text-lg lg:text-xl italic font-light max-w-2xl mb-2"
                         style={{ fontFamily: "var(--font-heading)" }}
                     >
                         &ldquo;Therefore what GOD has joined together, let no one separate&rdquo;
@@ -83,7 +83,7 @@ export function HeroSection() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 1, duration: 0.6 }}
-                        className="text-white/70 text-sm font-light"
+                        className="text-wedding-gold/70 text-sm font-light"
                         style={{ fontFamily: "var(--font-body)" }}
                     >
                         — Mark 10:9
@@ -102,7 +102,7 @@ export function HeroSection() {
                         {hashtags.map((tag, index) => (
                             <span
                                 key={index}
-                                className="text-[#DC2626] text-[10px] md:text-xs tracking-wide"
+                                className="text-wedding-gold text-[10px] md:text-xs tracking-wide"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
                                 {tag}
@@ -121,7 +121,7 @@ export function HeroSection() {
                             animate={{ y: [0, 10, 0] }}
                             transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
                         >
-                            <ChevronDown className="text-white/70" size={32} />
+                            <ChevronDown className="text-wedding-gold/70" size={32} />
                         </motion.div>
                     </motion.div>
                 </div>

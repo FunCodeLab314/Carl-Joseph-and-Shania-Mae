@@ -55,13 +55,13 @@ export function Countdown() {
                         initial={{ y: -10, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ duration: 0.3 }}
-                        className="text-wedding-ivory text-3xl md:text-5xl lg:text-6xl font-light"
+                        className="text-wedding-pearl text-3xl md:text-5xl lg:text-6xl font-light"
                         style={{ fontFamily: "var(--font-display)" }}
                     >
                         {String(unit.value).padStart(2, "0")}
                     </motion.div>
                     <p
-                        className="text-wedding-champagne/70 text-[10px] md:text-xs tracking-[0.2em] uppercase mt-2"
+                        className="text-wedding-gold/70 text-[10px] md:text-xs tracking-[0.2em] uppercase mt-2"
                         style={{ fontFamily: "var(--font-body)" }}
                     >
                         {unit.label}

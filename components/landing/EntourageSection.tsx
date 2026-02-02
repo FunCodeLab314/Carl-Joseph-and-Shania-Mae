@@ -4,20 +4,31 @@ import { motion } from "framer-motion";
 
 export function EntourageSection() {
     const principalSponsors = [
-        { male: "Engr. Rodnel O. Tamayo", female: "Mrs. Marietta Cariaga" },
-        { male: "Engr. Isidro D. Millo", female: "Mrs. Mary Anne G. Austria" },
-        { male: "Engr. Danilo Jasmin", female: "Mrs. Margarita C. Paule" },
-        { male: "Mr. Gerardo L. Soriano", female: "Mrs. Alona R. Tresvalles" },
-        { male: "Dr. Enrique R. Ostrea", female: "Mrs. Elvin F. Lingad" },
-        { male: "Mr. Virgilio C. Macaraeg", female: "Mrs. Adheleen N. Lafferty" },
-        { male: "Mr. Rolando Casillan", female: "Mrs. Gina L. Lingad" },
-        { male: "Mr. Joel S. Navarro", female: "Mrs. Noemi L. Larracas" },
-        { male: "Engr. Jaime Jasmin", female: "Mrs. Concepcion Urrutia-Coching" },
-        { male: "Ret. Major Domingo J. Diaz", female: "Dr. Araceli F. Morales" },
-        { male: "Mr. Noly L. Dabu", female: "Ms. Corazon D.G. Macam" },
-        { male: "Mr. Nito G. Lopez", female: "Mrs. Lani Caranto-Chua" },
-        { male: "Engr. Joselito G. Caranto", female: "Ms. Sandra D.C. Lopez" },
-        { male: "Dr. Efren Leal Jr.", female: "Mrs. Lorena Leal" },
+        { male: "Mr. Ulysiss Tundag", female: "Ms. Kristine Amin Yu Darlucio" },
+        { male: "Mr. John Rojas", female: "Mrs. Loida Rojas" },
+        { male: "Mr. Jerry Battung", female: "Mrs. Mary Ann Battung" },
+        { male: "Mr. Ryan Ondoy", female: "Mrs. Kitchie Ondoy" },
+        { male: "Mr. Jaypee Sacdal", female: "Mrs. Vicky Sacdal" },
+        { male: "Mr. Luis Deytiquez", female: "Mrs. Cynthia Matias" },
+        { male: "Mr. Ogie Cando", female: "Mrs. Amy Cando" },
+        { male: "Mr. Julius Tiquia", female: "Mrs. Fredizminda Tiquia" },
+        { male: "Mr. Froilan Patelo", female: "Mrs. Jenny Patelo" },
+        { male: "Mr. Oscar Gestiada", female: "Ms. Jenny Galves" },
+        { male: "Mr. Ferdinand Patelo", female: "Ms. Sally Belmonte" },
+    ];
+
+    const bestMenMaidsOfHonor = [
+        { male: "John Patrick Deytiquez", female: "" },
+        { male: "Jan Carl Dampil", female: "Irish Racel Tundag" },
+        { male: "Justin Henry Abrina", female: "Joyce Ann Capulong" },
+    ];
+
+    const bridesmaidsGroomsmen = [
+        { male: "Emmanuel Tundag", female: "Elleria Faye Tundag" },
+        { male: "Socrates Tundag Jr.", female: "Josephine Gacita" },
+        { male: "Willmar Niño", female: "Jimin Toribio" },
+        { male: "Darwin Deytiquez", female: "Nerliza Quintana" },
+        { male: "Mark Kevin Deytiquez", female: "Ara Bhela Dungca" },
     ];
 
     return (
@@ -68,7 +79,7 @@ export function EntourageSection() {
                                 className="text-wedding-charcoal text-base md:text-lg"
                                 style={{ fontFamily: "var(--font-heading)" }}
                             >
-                                Mr. Rolando E. Lopez
+                                Mr. Socrates Tundag
                             </p>
                             <p
                                 className="text-wedding-slate text-sm"
@@ -80,7 +91,7 @@ export function EntourageSection() {
                                 className="text-wedding-charcoal text-base md:text-lg"
                                 style={{ fontFamily: "var(--font-heading)" }}
                             >
-                                Mrs. Elenita Lingad-Lopez
+                                Mrs. Ma. Cecilia Patelo Tundag
                             </p>
                         </div>
                         {/* Groom's Parents */}
@@ -95,7 +106,7 @@ export function EntourageSection() {
                                 className="text-wedding-charcoal text-base md:text-lg"
                                 style={{ fontFamily: "var(--font-heading)" }}
                             >
-                                Engr. Godofredo M. Nardo
+                                Mr. Rogelio Deytiquez
                             </p>
                             <p
                                 className="text-wedding-slate text-sm"
@@ -107,7 +118,7 @@ export function EntourageSection() {
                                 className="text-wedding-charcoal text-base md:text-lg"
                                 style={{ fontFamily: "var(--font-heading)" }}
                             >
-                                Mrs. Thelma Jasmin-Nardo
+                                Mrs. Marichu Cuevas Deytiquez
                             </p>
                         </div>
                     </div>
@@ -151,7 +162,7 @@ export function EntourageSection() {
                     </div>
                 </motion.div>
 
-                {/* Best Man & Maid of Honor */}
+                {/* Best Men & Maids of Honor */}
                 <motion.div
                     className="mb-16"
                     initial={{ opacity: 0, y: 30 }}
@@ -159,34 +170,42 @@ export function EntourageSection() {
                     viewport={{ once: true, margin: "-50px" }}
                     transition={{ duration: 0.6 }}
                 >
+                    <h3
+                        className="text-wedding-charcoal text-xl md:text-2xl text-center mb-8"
+                        style={{ fontFamily: "var(--font-heading)" }}
+                    >
+                        Best Men & Maids of Honor
+                    </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
                         <div className="text-center">
                             <p
                                 className="text-wedding-red text-xs tracking-[0.2em] uppercase mb-3"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
-                                Best Man
+                                Best Men
                             </p>
-                            <p
-                                className="text-wedding-charcoal text-lg"
-                                style={{ fontFamily: "var(--font-heading)" }}
-                            >
-                                Glen D. Espeña
-                            </p>
+                            <div className="space-y-2">
+                                {bestMenMaidsOfHonor.map((pair, index) => (
+                                    <p key={index} className="text-wedding-slate text-sm" style={{ fontFamily: "var(--font-body)" }}>
+                                        {pair.male}
+                                    </p>
+                                ))}
+                            </div>
                         </div>
                         <div className="text-center">
                             <p
                                 className="text-wedding-red text-xs tracking-[0.2em] uppercase mb-3"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
-                                Maid of Honor
+                                Maids of Honor
                             </p>
-                            <p
-                                className="text-wedding-charcoal text-lg"
-                                style={{ fontFamily: "var(--font-heading)" }}
-                            >
-                                Alyssa Faye L. Garcia
-                            </p>
+                            <div className="space-y-2">
+                                {bestMenMaidsOfHonor.filter(p => p.female).map((pair, index) => (
+                                    <p key={index} className="text-wedding-slate text-sm" style={{ fontFamily: "var(--font-body)" }}>
+                                        {pair.female}
+                                    </p>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </motion.div>
@@ -223,13 +242,13 @@ export function EntourageSection() {
                                 className="text-wedding-slate text-sm"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
-                                Ivan Timothy J. Folloso
+                                Charlie Magne Lucero
                             </p>
                             <p
                                 className="text-wedding-slate text-sm"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
-                                Donet L. Ronquillo
+                                Marvilyn Torres
                             </p>
                         </div>
                         <div className="text-center">
@@ -243,13 +262,13 @@ export function EntourageSection() {
                                 className="text-wedding-slate text-sm"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
-                                Renz Michael L. Lopez
+                                Arnaldo Sodario
                             </p>
                             <p
                                 className="text-wedding-slate text-sm"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
-                                Celina Anne R. Quitlong
+                                Tricia Mae Datus
                             </p>
                         </div>
                         <div className="text-center">
@@ -263,13 +282,13 @@ export function EntourageSection() {
                                 className="text-wedding-slate text-sm"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
-                                Paulo N. Aniceto
+                                Leonard Bobadilla
                             </p>
                             <p
                                 className="text-wedding-slate text-sm"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
-                                May Anne E. Lingad
+                                Marjorie Xina Baltazar
                             </p>
                         </div>
                     </div>
@@ -292,9 +311,9 @@ export function EntourageSection() {
                                 Bridesmaids
                             </p>
                             <div className="space-y-2">
-                                <p className="text-wedding-slate text-sm" style={{ fontFamily: "var(--font-body)" }}>Chyna Mourie N. Valencia</p>
-                                <p className="text-wedding-slate text-sm" style={{ fontFamily: "var(--font-body)" }}>Blessie Mae L. Marcella</p>
-                                <p className="text-wedding-slate text-sm" style={{ fontFamily: "var(--font-body)" }}>Fatima V. Soriano</p>
+                                {bridesmaidsGroomsmen.map((pair, index) => (
+                                    <p key={index} className="text-wedding-slate text-sm" style={{ fontFamily: "var(--font-body)" }}>{pair.female}</p>
+                                ))}
                             </div>
                         </div>
                         <div className="text-center">
@@ -305,9 +324,9 @@ export function EntourageSection() {
                                 Groomsmen
                             </p>
                             <div className="space-y-2">
-                                <p className="text-wedding-slate text-sm" style={{ fontFamily: "var(--font-body)" }}>Kumi Jay N. Leal</p>
-                                <p className="text-wedding-slate text-sm" style={{ fontFamily: "var(--font-body)" }}>Ryan Joshua L. Lopez</p>
-                                <p className="text-wedding-slate text-sm" style={{ fontFamily: "var(--font-body)" }}>Elljay P. Mutuc</p>
+                                {bridesmaidsGroomsmen.map((pair, index) => (
+                                    <p key={index} className="text-wedding-slate text-sm" style={{ fontFamily: "var(--font-body)" }}>{pair.male}</p>
+                                ))}
                             </div>
                         </div>
                     </div>
@@ -327,12 +346,15 @@ export function EntourageSection() {
                                 className="text-wedding-red text-xs tracking-[0.2em] uppercase mb-4"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
-                                Flower Girls
+                                Flower Girls & Little Bride
                             </p>
                             <div className="space-y-2">
-                                <p className="text-wedding-slate text-sm" style={{ fontFamily: "var(--font-body)" }}>Amanda Chelsea D. Lopez</p>
-                                <p className="text-wedding-slate text-sm" style={{ fontFamily: "var(--font-body)" }}>Ma. Paula Joy L. Ronquillo</p>
-                                <p className="text-wedding-slate text-sm" style={{ fontFamily: "var(--font-body)" }}>Myiesha Adele S. Macaraeg</p>
+                                <p className="text-wedding-slate text-sm" style={{ fontFamily: "var(--font-body)" }}>
+                                    <span className="text-wedding-dove">Little Bride:</span> Maeve Kai&apos;sa Deytiquez
+                                </p>
+                                <p className="text-wedding-slate text-sm" style={{ fontFamily: "var(--font-body)" }}>Erica Cando</p>
+                                <p className="text-wedding-slate text-sm" style={{ fontFamily: "var(--font-body)" }}>Roma De Guzman</p>
+                                <p className="text-wedding-slate text-sm" style={{ fontFamily: "var(--font-body)" }}>Jen-jen Dimla</p>
                             </div>
                         </div>
                         {/* Bearers */}
@@ -341,17 +363,20 @@ export function EntourageSection() {
                                 className="text-wedding-red text-xs tracking-[0.2em] uppercase mb-4"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
-                                Bearers
+                                Bearers & Little Groom
                             </p>
                             <div className="space-y-2">
                                 <p className="text-wedding-slate text-sm" style={{ fontFamily: "var(--font-body)" }}>
-                                    <span className="text-wedding-dove">Ring:</span> Cayden Ellino L. Lopez
+                                    <span className="text-wedding-dove">Little Groom:</span> Shanlee Ezekiel Tundag
                                 </p>
                                 <p className="text-wedding-slate text-sm" style={{ fontFamily: "var(--font-body)" }}>
-                                    <span className="text-wedding-dove">Bible:</span> Claud Mason Y. Nardo
+                                    <span className="text-wedding-dove">Ring:</span> Chester Carvajal
                                 </p>
                                 <p className="text-wedding-slate text-sm" style={{ fontFamily: "var(--font-body)" }}>
-                                    <span className="text-wedding-dove">Coin:</span> Varackael Dtres N. Leal
+                                    <span className="text-wedding-dove">Bible:</span> Marco Cholo De Leon
+                                </p>
+                                <p className="text-wedding-slate text-sm" style={{ fontFamily: "var(--font-body)" }}>
+                                    <span className="text-wedding-dove">Coin:</span> Sonny Fajardo
                                 </p>
                             </div>
                         </div>

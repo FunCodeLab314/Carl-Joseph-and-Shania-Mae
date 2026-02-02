@@ -15,13 +15,13 @@ export function Footer() {
                     className="text-wedding-champagne/60 text-3xl md:text-4xl mb-4"
                     style={{ fontFamily: "var(--font-display)" }}
                 >
-                    G <span className="text-wedding-red">&</span> V
+                    C <span className="text-wedding-red">&</span> S
                 </p>
                 <p
                     className="text-wedding-dove text-xs tracking-[0.2em] uppercase"
                     style={{ fontFamily: "var(--font-body)" }}
                 >
-                    February 14, 2026
+                    June 20, 2026
                 </p>
                 <p
                     className="text-wedding-dove/50 text-xs mt-6"

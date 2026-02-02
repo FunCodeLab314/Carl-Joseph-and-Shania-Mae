@@ -12,7 +12,7 @@ export function Countdown() {
     });
 
     useEffect(() => {
-        const weddingDate = new Date("2026-02-14T15:00:00").getTime();
+        const weddingDate = new Date("2026-06-20T14:30:00").getTime();
 
         const updateCountdown = () => {
             const now = new Date().getTime();

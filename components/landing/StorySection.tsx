@@ -9,7 +9,7 @@ import {
     Play,
     Pause,
 } from "lucide-react";
-import Image from "next/image";
+import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
 
 // Story data structure
 interface Story {
@@ -17,50 +17,34 @@ interface Story {
     title: string;
     date: string;
     content: string;
-    images: string[];
+    imageCount: number;
 }
 
-// Story content based on the Google Doc
+// Story content based on the questionnaire
 const stories: Story[] = [
     {
         id: 1,
-        title: "Where It All Began",
+        title: "How We Met",
         date: "",
         content:
-            "We met at work, in the most ordinary way. Godfrey fell in love with Vanesa right away; Vanesa took a little longer. Three months of papansin Messenger chats followed—most of them unanswered—until one question finally landed: \"Hi Nes... Galing Mindoro yan. Kumakain ka niyan?\" It turns out love sometimes arrives quietly, often disguised as food.",
-        images: ["/photos/1.png"],
+            "Parehas kaming working sa SM Store, first duty ko non after my prolonged leave due to unforeseen circumstances. I wasn't on myself by that time and wala akong pakealam to anyone and I was just making myself busy as much as possible, but then one of my colleague called me and said \"Tingnan mo si uratex diser kanina ko pa nakikitang nakatingin sayo\" and I replied \"so? wala akong pake\" pero makulit si colleague at pinakilala pa din ako sa kanya. Carl Joseph said \"Hi po\" while blushing, and I was trying to be nice and said \"Hi\" too in a nonchalant way. After that, our colleague teased us and said mag shake hands kami pero etong si Carl Joseph ay hiyang-hiya at kulang nalang lumubog na sa floor, that's when I said \"Ayoko ng shake hands gusto ko kiss agad\" while grinning.",
+        imageCount: 1,
     },
     {
         id: 2,
-        title: "Love Letters",
+        title: "Our First Date",
         date: "",
         content:
-            "Godfrey is the kind of person who still believes in handwritten letters: thoughtful, intentional, and a little old-school. Vanesa, a hopeless romantic at heart, loved this immediately. In a world of quick messages and fleeting replies, those letters made everything feel slower, deeper, and more real.",
-        images: ["/photos/2.png"],
+            "Our first date was at Plaza Lucero in front of St. Nicholas of Tolentine Cathedral, Cabanatuan City. Nagtatanong siya that time ng gusto kong kainin dahil maraming choices of street foods sa location, pero ang gusto ko lang non is cotton candy and then sabi niya bibili siya but here's the thing kulang ng piso yung pambili niya at hiyang hiya siya sabihin saken dahil walang gcash si manong vendor hahaha kaya ang ending nanghingi pa siya saken 🤣",
+        imageCount: 1,
     },
     {
         id: 3,
-        title: "Our First Date",
-        date: "February 14",
-        content:
-            "Our first date happened on February 14, and over time, that date became ours. It felt right to keep it.",
-        images: ["/photos/3.png", "/photos/4.png", "/photos/5.png"],
-    },
-    {
-        id: 4,
-        title: "Opposites Attract",
+        title: "The Proposal",
         date: "",
         content:
-            "We are opposites in obvious ways. Godfrey loves football, sports, and beer; Vanesa would rather talk about pageantry, Taylor Swift, or skincare. And yet, we're also the same in many ways. We're both introverts and homebodies, happiest staying in—yet we keep choosing beach trips, despite neither of us knowing how to swim.",
-        images: ["/photos/6.png", "/photos/7.png", "/photos/8.png", "/photos/9.png"],
-    },
-    {
-        id: 5,
-        title: "Forever Starts Now",
-        date: "Proposed: July 14, 2025 • Wedding: February 14, 2026",
-        content:
-            "Last July 14, 2025, Godfrey proposed in the middle of the Bohol seas, witnessed only by dolphins, fish, and a very supportive bangkero. There was no easy way back to shore and no reason to say no. On February 14, 2026, we're getting married, turning a simple first date into a lifetime of adventures.",
-        images: ["/photos/10.png"],
+            "First month palang namin in a relationship sinasabi niya na sakin na at the age of 27 papakasalan niya na ko, he was 23 by that time. But then in September last year narealize niya malapit na siya mag 27. It was a simple night and it's just us having a great time talking about how we started and how it was going. Out of nowhere, he proposed without a ring... only love, honesty and commitment, and I have no reason to say no and just like what Taylor Swift said \"I like shiny things, but I'd marry you with paper rings\" but I still received a simple yet elegant ring from him a few weeks later. And for me, that is perfect.",
+        imageCount: 1,
     },
 ];
 
@@ -139,7 +123,7 @@ export function StorySection() {
 
         // Auto-advance: either to next image in story, or to next story
         autoAdvanceRef.current = setTimeout(() => {
-            const totalImages = currentStory.images.length;
+            const totalImages = currentStory.imageCount;
 
             if (currentImageIndex < totalImages - 1) {
                 // More images in current story - go to next image
@@ -152,7 +136,7 @@ export function StorySection() {
         }, AUTO_ADVANCE_DURATION * 1000);
 
         return () => clearTimers();
-    }, [isPlaying, currentIndex, currentImageIndex, currentStory.images.length, goToNext, clearTimers]);
+    }, [isPlaying, currentIndex, currentImageIndex, currentStory.imageCount, goToNext, clearTimers]);
 
     // Keyboard navigation
     useEffect(() => {
@@ -232,7 +216,7 @@ export function StorySection() {
                         {/* Image Side */}
                         <div className="relative order-1 md:order-1">
                             <div className="relative aspect-[4/5] md:aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl">
-                                {/* Image Crossfade Animation */}
+                                {/* Image Placeholder */}
                                 <AnimatePresence mode="wait">
                                     <motion.div
                                         key={`${currentIndex}-${currentImageIndex}`}
@@ -242,13 +226,10 @@ export function StorySection() {
                                         transition={{ duration: 0.5, ease: "easeInOut" }}
                                         className="absolute inset-0"
                                     >
-                                        <Image
-                                            src={currentStory.images[currentImageIndex]}
-                                            alt={currentStory.title}
-                                            fill
-                                            className="object-cover"
-                                            priority={currentIndex === 0}
-                                            sizes="(max-width: 768px) 100vw, 50vw"
+                                        <PlaceholderImage
+                                            className="w-full h-full"
+                                            label={`Story ${currentIndex + 1} Photo`}
+                                            variant="story"
                                         />
                                         {/* Gradient Overlay */}
                                         <div className="absolute inset-0 bg-gradient-to-t from-wedding-charcoal/40 via-transparent to-transparent" />
@@ -256,9 +237,9 @@ export function StorySection() {
                                 </AnimatePresence>
 
                                 {/* Image Indicators (if multiple images) */}
-                                {currentStory.images.length > 1 && (
+                                {currentStory.imageCount > 1 && (
                                     <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
-                                        {currentStory.images.map((_, imgIdx) => (
+                                        {Array.from({ length: currentStory.imageCount }).map((_, imgIdx) => (
                                             <div
                                                 key={imgIdx}
                                                 className={`h-1.5 rounded-full transition-all duration-300 ${imgIdx === currentImageIndex

@@ -3,28 +3,21 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import Image from "next/image";
 import { Countdown } from "@/components/ui/Countdown";
-
-const carouselImages = [
-    "/photos/homepage/1.jpg",
-    "/photos/homepage/2.jpg",
-    "/photos/homepage/3.jpg",
-];
+import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
 
 export function HeroSection() {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     const hashtags = [
-        "#NESAtamangtaonasiGODFREY",
-        "#ForeverHappiNESniNARDS",
-        "#ELLAveyou14nityGODFREY",
+        "#GodsRemarCARLbleGiftforSHANIA",
+        "#SaksiAngLangitSatin",
     ];
 
-    // Image carousel auto-cycling
+    // Image carousel auto-cycling (placeholder version - just cycles through indices)
     useEffect(() => {
         const interval = setInterval(() => {
-            setCurrentImageIndex((prev) => (prev + 1) % carouselImages.length);
+            setCurrentImageIndex((prev) => (prev + 1) % 3);
         }, 5000); // Change every 5 seconds
 
         return () => clearInterval(interval);
@@ -33,23 +26,12 @@ export function HeroSection() {
     return (
         <>
             <section id="home" className="relative h-screen w-full overflow-hidden bg-[#1a1a1a]">
-                {/* Background Image Carousel with Crossfade */}
-                {carouselImages.map((src, index) => (
-                    <div
-                        key={src}
-                        className={`absolute inset-0 transition-opacity duration-[1500ms] ease-in-out ${index === currentImageIndex ? "opacity-100" : "opacity-0"
-                            }`}
-                    >
-                        <Image
-                            src={src}
-                            alt={`Wedding background ${index + 1}`}
-                            fill
-                            priority={index === 0}
-                            className="object-cover object-center"
-                            sizes="100vw"
-                        />
-                    </div>
-                ))}
+                {/* Background Placeholder */}
+                <PlaceholderImage
+                    className="absolute inset-0 w-full h-full"
+                    label="Hero Background"
+                    variant="hero"
+                />
 
                 {/* Gradient Overlay */}
                 <div
@@ -69,7 +51,7 @@ export function HeroSection() {
                         className="text-white/80 text-xs md:text-sm tracking-[0.2em] md:tracking-[0.3em] uppercase mb-6 font-light"
                         style={{ fontFamily: "var(--font-body)" }}
                     >
-                        FEBRUARY 14, 2026
+                        JUNE 20, 2026
                     </motion.p>
 
                     {/* Names */}
@@ -80,9 +62,9 @@ export function HeroSection() {
                         className="text-white text-4xl md:text-6xl lg:text-8xl tracking-tight mb-4 font-light"
                         style={{ fontFamily: "var(--font-display)" }}
                     >
-                        Godfrey{" "}
+                        Carl Joseph{" "}
                         <span className="text-[#DC2626] inline-block mx-2 md:mx-4">&</span>{" "}
-                        Vanesa
+                        Shania Mae
                     </motion.h1>
 
                     {/* Quote */}
@@ -93,7 +75,7 @@ export function HeroSection() {
                         className="text-white/90 text-base md:text-lg lg:text-xl italic font-light max-w-2xl mb-2"
                         style={{ fontFamily: "var(--font-heading)" }}
                     >
-                        &ldquo;I have found the one whom my soul loves&rdquo;
+                        &ldquo;Therefore what GOD has joined together, let no one separate&rdquo;
                     </motion.p>
 
                     {/* Attribution */}
@@ -104,7 +86,7 @@ export function HeroSection() {
                         className="text-white/70 text-sm font-light"
                         style={{ fontFamily: "var(--font-body)" }}
                     >
-                        — Song of Solomon 3:4
+                        — Mark 10:9
                     </motion.p>
 
                     {/* Countdown */}

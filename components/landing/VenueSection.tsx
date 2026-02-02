@@ -3,15 +3,10 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Heart, Utensils, ExternalLink, X } from "lucide-react";
+import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
 
 export function VenueSection() {
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
-
-    const images = [
-        "/photos/CHURCH 2.jpg",
-        "/photos/front.jpg",
-
-    ];
 
     return (
         <>
@@ -20,7 +15,7 @@ export function VenueSection() {
                     {/* Side-by-side layout: Images Left, Content Right */}
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
 
-                        {/* Left Side - Image Gallery Grid (2 images only) */}
+                        {/* Left Side - Image Gallery Grid (2 placeholders) */}
                         <motion.div
                             className="grid grid-cols-2 gap-3"
                             initial={{ opacity: 0, x: -30 }}
@@ -28,27 +23,21 @@ export function VenueSection() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.8 }}
                         >
-                            {/* Left Image */}
-                            <div
-                                className="rounded-xl overflow-hidden shadow-lg cursor-pointer group"
-                                onClick={() => setSelectedImage(images[0])}
-                            >
-                                <img
-                                    src={images[0]}
-                                    alt="Main Venue"
-                                    className="w-full h-full object-cover aspect-[3/4] transition-transform duration-300 group-hover:scale-105"
+                            {/* Left Image Placeholder */}
+                            <div className="rounded-xl overflow-hidden shadow-lg">
+                                <PlaceholderImage
+                                    className="w-full h-full aspect-[3/4]"
+                                    label="Church Photo"
+                                    variant="venue"
                                 />
                             </div>
 
-                            {/* Right Image */}
-                            <div
-                                className="rounded-xl overflow-hidden shadow-lg cursor-pointer group"
-                                onClick={() => setSelectedImage(images[1])}
-                            >
-                                <img
-                                    src={images[1]}
-                                    alt="Venue Detail"
-                                    className="w-full h-full object-cover aspect-[3/4] transition-transform duration-300 group-hover:scale-105"
+                            {/* Right Image Placeholder */}
+                            <div className="rounded-xl overflow-hidden shadow-lg">
+                                <PlaceholderImage
+                                    className="w-full h-full aspect-[3/4]"
+                                    label="Reception Venue"
+                                    variant="venue"
                                 />
                             </div>
                         </motion.div>
@@ -83,15 +72,15 @@ export function VenueSection() {
                                             Ceremony
                                         </h3>
                                     </div>
-                                    <p className="text-wedding-red font-semibold mb-2 tracking-widest text-xs">3:00 PM</p>
+                                    <p className="text-wedding-red font-semibold mb-2 tracking-widest text-xs">2:30 PM</p>
                                     <p className="text-wedding-charcoal text-sm md:text-base font-medium mb-1" style={{ fontFamily: "var(--font-heading)" }}>
-                                        San Lorenzo Ruiz Parish Church
+                                        St. Nicholas of Tolentine Parish Cathedral
                                     </p>
                                     <p className="text-wedding-slate text-xs mb-4" style={{ fontFamily: "var(--font-body)" }}>
-                                        San Vicente, Tarlac City
+                                        Del Pilar Corner Gen. Luna Street, Cabanatuan City, Nueva Ecija
                                     </p>
                                     <a
-                                        href="https://www.google.com/maps/search/?api=1&query=San+Lorenzo+Ruiz+Parish+Church+San+Vicente+Tarlac+City"
+                                        href="https://maps.app.goo.gl/nZcp5BmVfoTEuY478"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="inline-flex items-center gap-2 bg-wedding-red text-wedding-ivory px-3 py-2 rounded-md text-[10px] tracking-[0.1em] uppercase hover:bg-wedding-darkred transition-colors shadow-md font-medium"
@@ -109,15 +98,15 @@ export function VenueSection() {
                                             Reception
                                         </h3>
                                     </div>
-                                    <p className="text-wedding-red font-semibold mb-2 tracking-widest text-xs">5:00 PM</p>
+                                    <p className="text-wedding-red font-semibold mb-2 tracking-widest text-xs">4:30 PM</p>
                                     <p className="text-wedding-charcoal text-sm md:text-base font-medium mb-1" style={{ fontFamily: "var(--font-heading)" }}>
-                                        The Bella Plaza
+                                        Fave Events Place
                                     </p>
                                     <p className="text-wedding-slate text-xs mb-4" style={{ fontFamily: "var(--font-body)" }}>
-                                        San Sebastian Village, Tarlac City
+                                        1st St, Hermogenes C. Concepcion Sr., Cabanatuan City, Nueva Ecija
                                     </p>
                                     <a
-                                        href="https://www.google.com/maps/search/?api=1&query=The+Bella+Plaza+San+Sebastian+Village+Tarlac+City"
+                                        href="https://maps.app.goo.gl/QPd9nM61tMhXFor28"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="inline-flex items-center gap-2 bg-wedding-red text-wedding-ivory px-3 py-2 rounded-md text-[10px] tracking-[0.1em] uppercase hover:bg-wedding-darkred transition-colors shadow-md font-medium"
@@ -132,7 +121,7 @@ export function VenueSection() {
                 </div>
             </section>
 
-            {/* Lightbox Modal */}
+            {/* Lightbox Modal - kept for future use */}
             <AnimatePresence>
                 {selectedImage && (
                     <motion.div

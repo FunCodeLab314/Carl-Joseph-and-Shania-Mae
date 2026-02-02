@@ -3,20 +3,18 @@
 import { motion } from "framer-motion";
 
 export function DressCodeSection() {
-    // Exact Hex Codes provided by user
-    // Guests (Ladies): Rosy Clay, Soft Peach, Light Apricot, Blush Nude, Soft Ivory
+    // Guest Palette: Burgundy and Black
     const guestPalette = [
-        { name: "Rosy Clay", hex: "#BC887A" },
-        { name: "Soft Peach", hex: "#E8AF93" },
-        { name: "Light Apricot", hex: "#EEC6B0" },
-        { name: "Blush Nude", hex: "#F1D5C6" },
-        { name: "Soft Ivory", hex: "#F4E8E1" },
+        { name: "Burgundy", hex: "#800020" },
+        { name: "Dark Burgundy", hex: "#722F37" },
+        { name: "Black", hex: "#1a1a1a" },
     ];
 
-    // Principal Sponsors: Champagne Cream, Warm Tan
+    // Principal Sponsors: Beige, Nude, Cream
     const sponsorPalette = [
-        { name: "Champagne Cream", hex: "#F4F1D8" },
-        { name: "Warm Tan", hex: "#D8B98F" },
+        { name: "Beige", hex: "#F5F5DC" },
+        { name: "Nude", hex: "#E3BC9A" },
+        { name: "Cream", hex: "#FFFDD0" },
     ];
 
     return (
@@ -31,7 +29,7 @@ export function DressCodeSection() {
                     transition={{ duration: 0.8 }}
                 >
                     <h2 id="dress-code-title" className="text-wedding-charcoal text-3xl md:text-4xl lg:text-5xl mb-12 md:mb-16" style={{ fontFamily: "var(--font-display)" }}>
-                        Dress Code: Formal
+                        Dress Code: Semi-Formal
                     </h2>
 
                     {/* Two Columns: Guests | Principal Sponsors */}
@@ -44,13 +42,13 @@ export function DressCodeSection() {
                             <div className="space-y-4 text-left">
                                 <div>
                                     <span className="block text-wedding-charcoal text-sm font-medium mb-1">Gentlemen:</span>
-                                    <span className="text-wedding-slate text-xs">Suit and Pants in any color</span>
+                                    <span className="text-wedding-slate text-xs">Semi-formal attire in Burgundy and Black</span>
                                 </div>
                                 <div>
                                     <span className="block text-wedding-charcoal text-sm font-medium mb-1">Ladies:</span>
-                                    <span className="text-wedding-slate text-xs block mb-2">Long gown / Long Dress / Formal Top and pants / Formal Jumpsuits in shades of Neutral Pink</span>
+                                    <span className="text-wedding-slate text-xs block mb-2">Semi-formal attire in Burgundy and Black</span>
                                     <span className="text-wedding-slate/60 text-[9px] uppercase tracking-wider block mb-3">
-                                        (Rosy Clay, Soft Peach, Light Apricot, Blush Nude, Soft Ivory)
+                                        (Burgundy, Black)
                                     </span>
                                 </div>
 
@@ -76,18 +74,18 @@ export function DressCodeSection() {
                             <div className="space-y-4 text-left">
                                 <div>
                                     <span className="block text-wedding-charcoal text-sm font-medium mb-1">Gentlemen:</span>
-                                    <span className="text-wedding-slate text-xs">Suit and tie in Champagne tones</span>
+                                    <span className="text-wedding-slate text-xs">Formal attire in Beige, Nude, or Cream tones</span>
                                 </div>
                                 <div>
                                     <span className="block text-wedding-charcoal text-sm font-medium mb-1">Ladies:</span>
-                                    <span className="text-wedding-slate text-xs">Evening gown in Beige or Tan</span>
+                                    <span className="text-wedding-slate text-xs">Formal attire in Beige, Nude, or Cream</span>
                                 </div>
                                 <span className="text-wedding-slate/60 text-[9px] uppercase tracking-wider block">
-                                    (Champagne Cream, Warm Tan)
+                                    (Beige, Nude, Cream)
                                 </span>
 
                                 {/* Sponsor Palette */}
-                                <div className="flex gap-1 border border-wedding-red/20 rounded-md overflow-hidden bg-white/30 p-1 max-w-[100px]">
+                                <div className="flex gap-1 border border-wedding-red/20 rounded-md overflow-hidden bg-white/30 p-1 max-w-[120px]">
                                     {sponsorPalette.map((color, i) => (
                                         <div
                                             key={i}

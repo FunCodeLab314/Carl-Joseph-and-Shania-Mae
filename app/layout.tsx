@@ -1,17 +1,23 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Playfair_Display, Montserrat } from "next/font/google";
+import { Great_Vibes, Playfair_Display, Cinzel, Montserrat } from "next/font/google";
 import "./globals.css";
 
-const cormorantGaramond = Cormorant_Garamond({
-  variable: "--font-display",
+const greatVibes = Great_Vibes({
+  variable: "--font-script",
   subsets: ["latin"],
-  weight: ["300", "400", "600"],
+  weight: ["400"],
 });
 
 const playfairDisplay = Playfair_Display({
-  variable: "--font-heading",
+  variable: "--font-display",
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
+  weight: ["400", "500", "600", "700"],
+});
+
+const cinzel = Cinzel({
+  variable: "--font-ornate",
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
 });
 
 const montserrat = Montserrat({
@@ -37,7 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${cormorantGaramond.variable} ${playfairDisplay.variable} ${montserrat.variable} antialiased`}
+        className={`${greatVibes.variable} ${playfairDisplay.variable} ${cinzel.variable} ${montserrat.variable} antialiased`}
       >
         {children}
       </body>

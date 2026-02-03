@@ -12,6 +12,7 @@ import { RSVPSection } from "@/components/landing/RSVPSection";
 import { Footer } from "@/components/landing/Footer";
 import { SectionDots } from "@/components/ui/SectionDots";
 import { MusicPlayer } from "@/components/ui/MusicPlayer";
+import { CandlelightParticles } from "@/components/ui/CandlelightParticles";
 
 // Loading fallback for RSVPSection
 function RSVPFallback() {
@@ -20,10 +21,10 @@ function RSVPFallback() {
       id="rsvp"
       className="relative min-h-[70vh] flex items-center justify-center py-16 md:py-24"
     >
-      <div className="absolute inset-0 bg-wedding-charcoal" />
+      <div className="absolute inset-0 bg-gradient-to-b from-wedding-burgundy-dark to-wedding-maroon" />
       <div className="relative z-10 text-center px-6">
         <h2
-          className="text-wedding-ivory text-5xl md:text-6xl lg:text-7xl mb-4"
+          className="text-wedding-gold text-5xl md:text-6xl lg:text-7xl mb-4"
           style={{ fontFamily: "var(--font-display)" }}
         >
           RSVP
@@ -41,7 +42,10 @@ function RSVPFallback() {
 
 export default function Home() {
   return (
-    <main className="bg-wedding-charcoal min-h-screen text-wedding-ivory selection:bg-wedding-red/30">
+    <main className="bg-wedding-burgundy-dark min-h-screen text-wedding-pearl selection:bg-wedding-gold/30">
+      {/* Global Candlelight Particles */}
+      <CandlelightParticles count={20} />
+
       <Navigation />
       <SectionDots />
       <MusicPlayer />

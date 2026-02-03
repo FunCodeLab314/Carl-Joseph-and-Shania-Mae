@@ -4,6 +4,8 @@ import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { BookOpen, ChevronLeft, ChevronRight, X, Heart } from "lucide-react";
 import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
+import { FloralScroll } from "@/components/ui/OrnateFrame";
+import { CandleGlowSpots } from "@/components/ui/CandlelightParticles";
 
 // Story data
 const stories = [
@@ -142,27 +144,44 @@ export function StorySection() {
 
     return (
         <>
-            <section id="story" className="bg-wedding-jet py-12 md:py-24 lg:py-32 overflow-hidden">
+            <section id="story" className="relative py-12 md:py-24 lg:py-32 overflow-hidden">
+                {/* Victorian Burgundy Gradient Background */}
+                <div className="absolute inset-0 bg-gradient-to-b from-wedding-burgundy-dark via-wedding-maroon to-wedding-wine" />
+
+                {/* Velvet texture overlay */}
+                <div className="absolute inset-0 velvet-texture opacity-20" />
+
+                {/* Candlelight glow spots */}
+                <CandleGlowSpots count={10} />
+
+                {/* Chandelier light from top */}
+                <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                        background: "radial-gradient(ellipse at center top, rgba(212, 175, 55, 0.1) 0%, transparent 40%)"
+                    }}
+                />
+
                 {/* Header - Mobile First */}
                 <motion.div
-                    className="text-center mb-8 md:mb-16 px-4"
+                    className="relative z-10 text-center mb-8 md:mb-16 px-4"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-50px" }}
                     transition={{ duration: 0.8 }}
                 >
-                    <p className="text-wedding-burgundy text-[10px] md:text-xs tracking-[0.2em] md:tracking-[0.3em] mb-3 md:mb-4 uppercase" style={{ fontFamily: "var(--font-body)" }}>
-                        OUR JOURNEY
+                    <p className="text-wedding-champagne text-[10px] md:text-xs tracking-[0.3em] md:tracking-[0.4em] mb-3 md:mb-4 uppercase" style={{ fontFamily: "var(--font-ornate)" }}>
+                        Our Journey
                     </p>
-                    <h2 id="story-title" className="text-wedding-gold text-2xl md:text-5xl lg:text-6xl mb-4 md:mb-8" style={{ fontFamily: "var(--font-display)" }}>
+                    <h2 id="story-title" className="text-wedding-gold text-2xl md:text-5xl lg:text-6xl mb-4 md:mb-6" style={{ fontFamily: "var(--font-display)" }}>
                         Our Love Story
                     </h2>
-                    <div className="w-12 md:w-16 h-[1px] bg-wedding-burgundy mx-auto" />
+                    <FloralScroll className="w-32 md:w-48 h-6 mx-auto" />
                 </motion.div>
 
                 {/* Pinterest-Style Photo Grid Wall - Mobile First */}
                 <motion.div
-                    className="max-w-6xl mx-auto px-3 md:px-8 mb-8 md:mb-12"
+                    className="relative z-10 max-w-6xl mx-auto px-3 md:px-8 mb-8 md:mb-12"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
@@ -274,7 +293,7 @@ export function StorySection() {
 
                 {/* Read Our Story Button - Mobile First */}
                 <motion.div
-                    className="text-center px-4"
+                    className="relative z-10 text-center px-4"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -282,7 +301,7 @@ export function StorySection() {
                 >
                     <motion.button
                         onClick={() => { setIsBookOpen(true); setCurrentPage(0); }}
-                        className="inline-flex items-center gap-2 md:gap-3 bg-wedding-burgundy text-wedding-gold px-6 md:px-12 py-3 md:py-4 text-sm md:text-lg tracking-[0.1em] md:tracking-[0.15em] uppercase font-medium rounded-lg shadow-lg md:shadow-xl hover:bg-wedding-burgundy-dark hover:shadow-2xl transition-all duration-300"
+                        className="relative inline-flex items-center gap-2 md:gap-3 border-2 border-wedding-gold bg-wedding-burgundy-dark/80 text-wedding-gold px-6 md:px-12 py-3 md:py-4 text-sm md:text-lg tracking-[0.1em] md:tracking-[0.15em] uppercase font-medium rounded-lg shadow-lg md:shadow-xl hover:bg-wedding-burgundy hover:shadow-2xl transition-all duration-300 ornate-glow"
                         style={{ fontFamily: "var(--font-display)" }}
                         whileHover={{ scale: 1.05, y: -2 }}
                         whileTap={{ scale: 0.98 }}

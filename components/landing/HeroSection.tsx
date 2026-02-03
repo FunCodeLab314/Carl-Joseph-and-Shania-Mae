@@ -81,8 +81,8 @@ export function HeroSection() {
                 />
 
                 {/* Content */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
-                    <OrnateFrame variant="primary" className="max-w-4xl w-full mx-auto">
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 md:px-12 lg:px-24">
+                    <OrnateFrame variant="primary" className="max-w-lg md:max-w-2xl lg:max-w-3xl w-full mx-auto">
                         {/* Welcome Text */}
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}

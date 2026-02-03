@@ -5,7 +5,6 @@ import {
     Heading,
     Hr,
     Html,
-    Img,
     Preview,
     Section,
     Text,
@@ -90,18 +89,29 @@ export default function RSVPEmail({
                         <Section style={eventSection}>
                             <Text style={eventTitle}>Event Details</Text>
                             <Text style={eventDetail}>
-                                📅 <strong>February 14, 2026</strong>
+                                📅 <strong>June 20, 2026</strong>
                             </Text>
                             <Text style={eventDetail}>
-                                🕓 <strong>Ceremony:</strong> 3:00 PM
+                                💒 <strong>Ceremony:</strong> 2:30 PM
                                 <br />
-                                <span style={subDetail}>San Lorenzo Ruiz Parish Church, San Vicente, Tarlac City</span>
+                                <span style={subDetail}>St. Nicholas of Tolentine Parish Cathedral</span>
+                                <span style={subDetail}>Del Pilar Corner Gen. Luna Street, Cabanatuan City, Nueva Ecija</span>
                             </Text>
                             <Text style={eventDetail}>
-                                🍽️ <strong>Reception:</strong> 5:00 PM
+                                🍽️ <strong>Reception:</strong> 4:30 PM
                                 <br />
-                                <span style={subDetail}>The Bella Plaza, San Sebastian Village, Tarlac City</span>
+                                <span style={subDetail}>Fave Events Place</span>
+                                <span style={subDetail}>1st St, Hermogenes C. Concepcion Sr., Cabanatuan City, Nueva Ecija</span>
                             </Text>
+                        </Section>
+                    )}
+
+                    {/* Hashtags Section */}
+                    {attending && (
+                        <Section style={hashtagSection}>
+                            <Text style={hashtagLabel}>Share Your Moments With Us</Text>
+                            <Text style={hashtag}>#GodsRemarCARLbleGiftforSHANIA</Text>
+                            <Text style={hashtag}>#SaksiAngLangitSatin</Text>
                         </Section>
                     )}
 
@@ -109,7 +119,7 @@ export default function RSVPEmail({
                     <Section style={closingSection}>
                         <Text style={closing}>With love,</Text>
                         <Text style={signature}>
-                            Godfrey & Vanesa
+                            Carl Joseph & Shania Mae
                         </Text>
                     </Section>
 
@@ -131,13 +141,13 @@ export default function RSVPEmail({
 // ============================================================================
 
 const main = {
-    backgroundColor: "#F5F5F0",
+    backgroundColor: "#0A0A0A",
     fontFamily: "'Georgia', 'Times New Roman', serif",
     padding: "40px 20px",
 };
 
 const container = {
-    backgroundColor: "#FDFBF7",
+    backgroundColor: "#0F0F0F",
     border: "2px solid #C9A962",
     borderRadius: "8px",
     margin: "0 auto",
@@ -147,12 +157,12 @@ const container = {
 };
 
 const topBorder = {
-    backgroundColor: "#C9A962",
+    backgroundColor: "#722F37",
     height: "6px",
 };
 
 const bottomBorder = {
-    backgroundColor: "#C9A962",
+    backgroundColor: "#722F37",
     height: "6px",
 };
 
@@ -169,7 +179,7 @@ const floralDecor = {
 };
 
 const heading = {
-    color: "#2B2B2B",
+    color: "#C9A962",
     fontFamily: "'Playfair Display', Georgia, serif",
     fontSize: "32px",
     fontWeight: "600",
@@ -188,7 +198,7 @@ const divider = {
 };
 
 const greeting = {
-    color: "#4A4A4A",
+    color: "#C9A962",
     fontSize: "18px",
     lineHeight: "1.6",
     margin: "0 0 24px",
@@ -197,15 +207,16 @@ const greeting = {
 };
 
 const statusSection = {
-    backgroundColor: "#FAF7F2",
+    backgroundColor: "#0A0A0A",
     borderRadius: "8px",
     margin: "0 40px 24px",
     padding: "24px",
     textAlign: "center" as const,
+    border: "1px solid #C9A962",
 };
 
 const statusLabel = {
-    color: "#6B6B6B",
+    color: "#C9A962",
     fontSize: "12px",
     letterSpacing: "2px",
     margin: "0 0 8px",
@@ -213,7 +224,7 @@ const statusLabel = {
 };
 
 const statusAttending = {
-    color: "#2E7D32",
+    color: "#C9A962",
     fontFamily: "'Playfair Display', Georgia, serif",
     fontSize: "24px",
     fontWeight: "600",
@@ -221,7 +232,7 @@ const statusAttending = {
 };
 
 const statusDeclining = {
-    color: "#C62828",
+    color: "#722F37",
     fontFamily: "'Playfair Display', Georgia, serif",
     fontSize: "24px",
     fontWeight: "600",
@@ -229,15 +240,16 @@ const statusDeclining = {
 };
 
 const detailsSection = {
-    backgroundColor: "#FAF7F2",
+    backgroundColor: "#0A0A0A",
     borderRadius: "8px",
     margin: "0 40px 24px",
     padding: "20px",
     textAlign: "center" as const,
+    border: "1px solid #C9A962",
 };
 
 const detailsLabel = {
-    color: "#6B6B6B",
+    color: "#C9A962",
     fontSize: "12px",
     letterSpacing: "2px",
     margin: "0 0 8px",
@@ -245,7 +257,7 @@ const detailsLabel = {
 };
 
 const detailsValue = {
-    color: "#2B2B2B",
+    color: "#C9A962",
     fontFamily: "'Playfair Display', Georgia, serif",
     fontSize: "20px",
     fontWeight: "500",
@@ -253,7 +265,7 @@ const detailsValue = {
 };
 
 const message = {
-    color: "#4A4A4A",
+    color: "#C9A962",
     fontSize: "16px",
     fontStyle: "italic" as const,
     lineHeight: "1.8",
@@ -263,8 +275,8 @@ const message = {
 };
 
 const eventSection = {
-    backgroundColor: "#FAF7F2",
-    borderLeft: "4px solid #C9A962",
+    backgroundColor: "#0A0A0A",
+    borderLeft: "4px solid #722F37",
     margin: "0 40px 24px",
     padding: "24px",
 };
@@ -278,17 +290,41 @@ const eventTitle = {
 };
 
 const eventDetail = {
-    color: "#4A4A4A",
+    color: "#C9A962",
     fontSize: "15px",
     lineHeight: "1.8",
     margin: "0 0 12px",
 };
 
 const subDetail = {
-    color: "#6B6B6B",
+    color: "#C9A962",
     fontSize: "13px",
     display: "block",
     marginTop: "4px",
+};
+
+const hashtagSection = {
+    backgroundColor: "#0A0A0A",
+    borderRadius: "8px",
+    margin: "0 40px 24px",
+    padding: "20px",
+    textAlign: "center" as const,
+    border: "1px solid #722F37",
+};
+
+const hashtagLabel = {
+    color: "#722F37",
+    fontSize: "11px",
+    letterSpacing: "2px",
+    margin: "0 0 12px",
+    textTransform: "uppercase" as const,
+};
+
+const hashtag = {
+    color: "#C9A962",
+    fontSize: "14px",
+    margin: "4px 0",
+    fontStyle: "italic" as const,
 };
 
 const closingSection = {
@@ -297,14 +333,14 @@ const closingSection = {
 };
 
 const closing = {
-    color: "#6B6B6B",
+    color: "#722F37",
     fontSize: "16px",
     fontStyle: "italic" as const,
     margin: "0 0 8px",
 };
 
 const signature = {
-    color: "#2B2B2B",
+    color: "#C9A962",
     fontFamily: "'Playfair Display', Georgia, serif",
     fontSize: "24px",
     fontWeight: "500",

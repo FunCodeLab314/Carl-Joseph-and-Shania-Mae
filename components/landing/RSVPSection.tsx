@@ -390,7 +390,7 @@ export function RSVPSection() {
                                     {/* Email */}
                                     <div>
                                         <label
-                                            className="block text-wedding-red text-xs tracking-[0.2em] uppercase mb-2"
+                                            className="block text-wedding-gold text-xs tracking-[0.2em] uppercase mb-2"
                                             style={{ fontFamily: "var(--font-body)" }}
                                         >
                                             Email Address <span className="text-wedding-burgundy">*</span>
@@ -409,7 +409,7 @@ export function RSVPSection() {
                                     {/* Number of Guests */}
                                     <div>
                                         <label
-                                            className="block text-wedding-red text-xs tracking-[0.2em] uppercase mb-2"
+                                            className="block text-wedding-gold text-xs tracking-[0.2em] uppercase mb-2"
                                             style={{ fontFamily: "var(--font-body)" }}
                                         >
                                             Number of Guests
@@ -437,7 +437,7 @@ export function RSVPSection() {
                                             {additionalGuests.map((name, index) => (
                                                 <div key={index}>
                                                     <label
-                                                        className="block text-wedding-red/70 text-[10px] tracking-[0.2em] uppercase mb-1"
+                                                        className="block text-wedding-gold/70 text-[10px] tracking-[0.2em] uppercase mb-1"
                                                         style={{ fontFamily: "var(--font-body)" }}
                                                     >
                                                         Guest {index + 2} Name <span className="text-wedding-burgundy">*</span>
@@ -459,7 +459,7 @@ export function RSVPSection() {
                                     {/* Attendance - Radio Buttons */}
                                     <div>
                                         <label
-                                            className="block text-wedding-red text-xs tracking-[0.2em] uppercase mb-4"
+                                            className="block text-wedding-gold text-xs tracking-[0.2em] uppercase mb-4"
                                             style={{ fontFamily: "var(--font-body)" }}
                                         >
                                             Will You Attend? <span className="text-wedding-burgundy">*</span>
@@ -524,7 +524,7 @@ export function RSVPSection() {
                                     {/* Message */}
                                     <div>
                                         <label
-                                            className="block text-wedding-red text-xs tracking-[0.2em] uppercase mb-2"
+                                            className="block text-wedding-gold text-xs tracking-[0.2em] uppercase mb-2"
                                             style={{ fontFamily: "var(--font-body)" }}
                                         >
                                             Message (Optional)
@@ -761,9 +761,9 @@ export function RSVPSection() {
                             id="rsvp-button"
                             onClick={() => !isInvitationUsed && setShowWarningModal(true)}
                             disabled={isInvitationUsed}
-                            className={`relative bg-wedding-burgundy text-wedding-gold px-12 md:px-16 py-4 md:py-5 text-sm md:text-base tracking-[0.2em] uppercase font-bold rounded-lg shadow-xl transition-all flex items-center gap-3 mx-auto ${isInvitationUsed
+                            className={`relative bg-wedding-burgundy border-2 border-wedding-gold text-wedding-gold px-12 md:px-16 py-4 md:py-5 text-sm md:text-base tracking-[0.2em] uppercase font-bold rounded-lg shadow-xl transition-all flex items-center gap-3 mx-auto ${isInvitationUsed
                                 ? "opacity-50 cursor-not-allowed grayscale"
-                                : "hover:bg-wedding-burgundy-dark"
+                                : "hover:bg-wedding-burgundy-dark hover:shadow-2xl"
                                 }`}
                             style={{ fontFamily: "var(--font-body)" }}
                             whileHover={!isInvitationUsed ? { scale: 1.05 } : {}}
@@ -773,7 +773,7 @@ export function RSVPSection() {
                             {!isInvitationUsed && (
                                 <>
                                     <motion.span
-                                        className="absolute inset-0 rounded-lg border-2 border-wedding-burgundy"
+                                        className="absolute inset-0 rounded-lg border-2 border-wedding-gold"
                                         animate={{
                                             scale: [1, 1.15, 1.15],
                                             opacity: [0.8, 0, 0],
@@ -785,7 +785,7 @@ export function RSVPSection() {
                                         }}
                                     />
                                     <motion.span
-                                        className="absolute inset-0 rounded-lg border-2 border-wedding-red"
+                                        className="absolute inset-0 rounded-lg border-2 border-wedding-gold/50"
                                         animate={{
                                             scale: [1, 1.25, 1.25],
                                             opacity: [0.5, 0, 0],
@@ -861,7 +861,18 @@ export function RSVPSection() {
 
                     {/* Heart Icon */}
                     <div className="flex justify-center mt-6">
-                        <Heart className="text-wedding-burgundy/40" size={20} fill="currentColor" />
+                        <motion.div
+                            animate={{
+                                scale: [1, 1.2, 1],
+                            }}
+                            transition={{
+                                duration: 0.8,
+                                repeat: Infinity,
+                                ease: "easeInOut",
+                            }}
+                        >
+                            <Heart className="text-wedding-gold" size={20} fill="currentColor" />
+                        </motion.div>
                     </div>
                 </motion.div>
             </section>

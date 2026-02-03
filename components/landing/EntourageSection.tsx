@@ -43,7 +43,7 @@ export function EntourageSection() {
                     transition={{ duration: 0.8 }}
                 >
                     <p
-                        className="text-wedding-burgundy text-xs tracking-[0.3em] mb-4"
+                        className="text-wedding-gold text-xs tracking-[0.3em] mb-4"
                         style={{ fontFamily: "var(--font-body)" }}
                     >
                         OUR ENTOURAGE
@@ -70,7 +70,7 @@ export function EntourageSection() {
                         {/* Bride's Parents */}
                         <div className="text-center bg-wedding-charcoal/50 rounded-xl p-6 border border-wedding-gold/10">
                             <p
-                                className="text-wedding-burgundy text-xs tracking-[0.2em] uppercase mb-4"
+                                className="text-wedding-gold text-xs tracking-[0.2em] uppercase mb-4"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
                                 Bride&apos;s Parents
@@ -97,7 +97,7 @@ export function EntourageSection() {
                         {/* Groom's Parents */}
                         <div className="text-center bg-wedding-charcoal/50 rounded-xl p-6 border border-wedding-gold/10">
                             <p
-                                className="text-wedding-burgundy text-xs tracking-[0.2em] uppercase mb-4"
+                                className="text-wedding-gold text-xs tracking-[0.2em] uppercase mb-4"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
                                 Groom&apos;s Parents
@@ -179,7 +179,7 @@ export function EntourageSection() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
                         <div className="text-center">
                             <p
-                                className="text-wedding-burgundy text-xs tracking-[0.2em] uppercase mb-3"
+                                className="text-wedding-gold text-xs tracking-[0.2em] uppercase mb-3"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
                                 Best Men
@@ -194,7 +194,7 @@ export function EntourageSection() {
                         </div>
                         <div className="text-center">
                             <p
-                                className="text-wedding-burgundy text-xs tracking-[0.2em] uppercase mb-3"
+                                className="text-wedding-gold text-xs tracking-[0.2em] uppercase mb-3"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
                                 Maids of Honor
@@ -233,7 +233,7 @@ export function EntourageSection() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
                         <div className="text-center">
                             <p
-                                className="text-wedding-burgundy text-xs tracking-[0.2em] uppercase mb-3"
+                                className="text-wedding-gold text-xs tracking-[0.2em] uppercase mb-3"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
                                 Candle
@@ -253,7 +253,7 @@ export function EntourageSection() {
                         </div>
                         <div className="text-center">
                             <p
-                                className="text-wedding-burgundy text-xs tracking-[0.2em] uppercase mb-3"
+                                className="text-wedding-gold text-xs tracking-[0.2em] uppercase mb-3"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
                                 Veil
@@ -273,7 +273,7 @@ export function EntourageSection() {
                         </div>
                         <div className="text-center">
                             <p
-                                className="text-wedding-burgundy text-xs tracking-[0.2em] uppercase mb-3"
+                                className="text-wedding-gold text-xs tracking-[0.2em] uppercase mb-3"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
                                 Cord
@@ -305,7 +305,7 @@ export function EntourageSection() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
                         <div className="text-center">
                             <p
-                                className="text-wedding-burgundy text-xs tracking-[0.2em] uppercase mb-4"
+                                className="text-wedding-gold text-xs tracking-[0.2em] uppercase mb-4"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
                                 Bridesmaids
@@ -318,7 +318,7 @@ export function EntourageSection() {
                         </div>
                         <div className="text-center">
                             <p
-                                className="text-wedding-burgundy text-xs tracking-[0.2em] uppercase mb-4"
+                                className="text-wedding-gold text-xs tracking-[0.2em] uppercase mb-4"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
                                 Groomsmen
@@ -343,7 +343,7 @@ export function EntourageSection() {
                         {/* Flower Girls */}
                         <div className="text-center">
                             <p
-                                className="text-wedding-burgundy text-xs tracking-[0.2em] uppercase mb-4"
+                                className="text-wedding-gold text-xs tracking-[0.2em] uppercase mb-4"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
                                 Flower Girls & Little Bride
@@ -360,7 +360,7 @@ export function EntourageSection() {
                         {/* Bearers */}
                         <div className="text-center">
                             <p
-                                className="text-wedding-burgundy text-xs tracking-[0.2em] uppercase mb-4"
+                                className="text-wedding-gold text-xs tracking-[0.2em] uppercase mb-4"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
                                 Bearers & Little Groom

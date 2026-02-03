@@ -371,17 +371,17 @@ export function RSVPSection() {
                                     {/* Full Name */}
                                     <div>
                                         <label
-                                            className="block text-wedding-burgundy text-xs tracking-[0.2em] uppercase mb-2"
+                                            className="block text-wedding-gold text-xs tracking-[0.2em] uppercase mb-2"
                                             style={{ fontFamily: "var(--font-body)" }}
                                         >
-                                            Your Full Name <span className="text-wedding-burgundy">*</span>
+                                            Your Full Name <span className="text-wedding-gold">*</span>
                                         </label>
                                         <input
                                             type="text"
                                             required
                                             value={formData.name}
                                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                            className="w-full bg-transparent border-b-2 border-wedding-gold/40 text-wedding-pearl py-3 focus:border-wedding-burgundy focus:outline-none transition-all duration-300 placeholder:text-wedding-pearl/50"
+                                            className="w-full bg-transparent border-b-2 border-wedding-gold/40 text-wedding-pearl py-3 focus:border-wedding-gold focus:outline-none transition-all duration-300 placeholder:text-wedding-pearl/50"
                                             style={{ fontFamily: "var(--font-body)" }}
                                             placeholder="Enter your full name"
                                         />
@@ -393,14 +393,14 @@ export function RSVPSection() {
                                             className="block text-wedding-gold text-xs tracking-[0.2em] uppercase mb-2"
                                             style={{ fontFamily: "var(--font-body)" }}
                                         >
-                                            Email Address <span className="text-wedding-burgundy">*</span>
+                                            Email Address <span className="text-wedding-gold">*</span>
                                         </label>
                                         <input
                                             type="email"
                                             required
                                             value={formData.email}
                                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                            className="w-full bg-transparent border-b-2 border-wedding-champagne/40 text-wedding-ivory py-3 focus:border-wedding-red focus:outline-none transition-all duration-300 placeholder:text-wedding-champagne/50"
+                                            className="w-full bg-transparent border-b-2 border-wedding-gold/40 text-wedding-pearl py-3 focus:border-wedding-gold focus:outline-none transition-all duration-300 placeholder:text-wedding-pearl/50"
                                             style={{ fontFamily: "var(--font-body)" }}
                                             placeholder="your.email@example.com"
                                         />
@@ -417,7 +417,7 @@ export function RSVPSection() {
                                         <select
                                             value={formData.guests}
                                             onChange={handleGuestsChange}
-                                            className="w-full bg-transparent border-b-2 border-wedding-gold/40 text-wedding-pearl py-3 focus:border-wedding-burgundy focus:outline-none transition-all duration-300 cursor-pointer"
+                                            className="w-full bg-transparent border-b-2 border-wedding-gold/40 text-wedding-pearl py-3 focus:border-wedding-gold focus:outline-none transition-all duration-300 cursor-pointer"
                                             style={{ fontFamily: "var(--font-body)" }}
                                             disabled={isLoadingInvitation}
                                         >
@@ -433,14 +433,14 @@ export function RSVPSection() {
 
                                     {/* Additional Guests Inputs */}
                                     {parseInt(formData.guests) > 1 && (
-                                        <div className="space-y-4 pl-4 border-l-2 border-wedding-burgundy/20 ml-1 animate-in fade-in slide-in-from-top-2 duration-300">
+                                        <div className="space-y-4 pl-4 border-l-2 border-wedding-gold/20 ml-1 animate-in fade-in slide-in-from-top-2 duration-300">
                                             {additionalGuests.map((name, index) => (
                                                 <div key={index}>
                                                     <label
                                                         className="block text-wedding-gold/70 text-[10px] tracking-[0.2em] uppercase mb-1"
                                                         style={{ fontFamily: "var(--font-body)" }}
                                                     >
-                                                        Guest {index + 2} Name <span className="text-wedding-burgundy">*</span>
+                                                        Guest {index + 2} Name <span className="text-wedding-gold">*</span>
                                                     </label>
                                                     <input
                                                         type="text"
@@ -448,7 +448,7 @@ export function RSVPSection() {
                                                         value={name}
                                                         onChange={(e) => handleGuestNameChange(index, e.target.value)}
                                                         placeholder={`Full Name of Guest ${index + 2}`}
-                                                        className="w-full bg-transparent border-b border-wedding-gold/20 text-wedding-pearl py-2 text-sm focus:border-wedding-burgundy focus:outline-none transition-all duration-300 placeholder:text-wedding-pearl/30"
+                                                        className="w-full bg-transparent border-b border-wedding-gold/20 text-wedding-pearl py-2 text-sm focus:border-wedding-gold focus:outline-none transition-all duration-300 placeholder:text-wedding-pearl/30"
                                                         style={{ fontFamily: "var(--font-body)" }}
                                                     />
                                                 </div>
@@ -462,12 +462,12 @@ export function RSVPSection() {
                                             className="block text-wedding-gold text-xs tracking-[0.2em] uppercase mb-4"
                                             style={{ fontFamily: "var(--font-body)" }}
                                         >
-                                            Will You Attend? <span className="text-wedding-burgundy">*</span>
+                                            Will You Attend? <span className="text-wedding-gold">*</span>
                                         </label>
                                         <div className="flex gap-4">
                                             <label
                                                 className={`flex-1 flex items-center justify-center gap-2 p-3 rounded-lg border-2 cursor-pointer transition-all duration-300 ${formData.attending === "yes"
-                                                    ? "border-wedding-burgundy bg-wedding-burgundy/20"
+                                                    ? "border-wedding-gold bg-wedding-gold/20"
                                                     : "border-wedding-gold/30 hover:border-wedding-gold/60"
                                                     }`}
                                             >
@@ -481,7 +481,7 @@ export function RSVPSection() {
                                                     required
                                                 />
                                                 <Heart
-                                                    className={`${formData.attending === "yes" ? "text-wedding-burgundy" : "text-wedding-gold/50"}`}
+                                                    className={`${formData.attending === "yes" ? "text-wedding-gold" : "text-wedding-gold/50"}`}
                                                     size={18}
                                                     fill={formData.attending === "yes" ? "currentColor" : "none"}
                                                 />
@@ -495,7 +495,7 @@ export function RSVPSection() {
 
                                             <label
                                                 className={`flex-1 flex items-center justify-center gap-2 p-3 rounded-lg border-2 cursor-pointer transition-all duration-300 ${formData.attending === "no"
-                                                    ? "border-wedding-dove bg-wedding-dove/20"
+                                                    ? "border-wedding-gold/60 bg-wedding-gold/10"
                                                     : "border-wedding-gold/30 hover:border-wedding-gold/60"
                                                     }`}
                                             >
@@ -508,7 +508,7 @@ export function RSVPSection() {
                                                     className="sr-only"
                                                 />
                                                 <X
-                                                    className={`${formData.attending === "no" ? "text-wedding-dove" : "text-wedding-gold/50"}`}
+                                                    className={`${formData.attending === "no" ? "text-wedding-gold/80" : "text-wedding-gold/50"}`}
                                                     size={18}
                                                 />
                                                 <span
@@ -533,7 +533,7 @@ export function RSVPSection() {
                                             value={formData.message}
                                             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                                             rows={3}
-                                            className="w-full bg-transparent border-b-2 border-wedding-gold/40 text-wedding-pearl py-3 focus:border-wedding-burgundy focus:outline-none transition-all duration-300 resize-none placeholder:text-wedding-pearl/50"
+                                            className="w-full bg-transparent border-b-2 border-wedding-gold/40 text-wedding-pearl py-3 focus:border-wedding-gold focus:outline-none transition-all duration-300 resize-none placeholder:text-wedding-pearl/50"
                                             style={{ fontFamily: "var(--font-body)" }}
                                             placeholder="Share your wishes..."
                                         />

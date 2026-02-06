@@ -454,10 +454,21 @@ export function EntourageSection() {
                                     className="text-wedding-gold text-lg md:text-xl font-semibold tracking-[0.2em] uppercase mb-6"
                                     style={{ fontFamily: "var(--font-display)" }}
                                 >
-                                    Flower Girls
+                                    Flower Girl & Escort
                                 </h3>
-                                <div className="space-y-2 flex-1">
-                                    {/* Empty - to be filled later */}
+                                <div className="space-y-4 flex-1">
+                                    <div>
+                                        <p className="text-wedding-gold text-xs tracking-[0.15em] uppercase mb-1" style={{ fontFamily: "var(--font-ornate)" }}>Flower Girl</p>
+                                        <p className="text-wedding-pearl text-sm" style={{ fontFamily: "var(--font-body)" }}>
+                                            Mary Zyle Tundag
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <p className="text-wedding-gold text-xs tracking-[0.15em] uppercase mb-1" style={{ fontFamily: "var(--font-ornate)" }}>Escort</p>
+                                        <p className="text-wedding-pearl text-sm" style={{ fontFamily: "var(--font-body)" }}>
+                                            Tristan Jay Deytiquez
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </OrnateFrame>

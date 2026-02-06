@@ -5,26 +5,31 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, ImageIcon, Grid3X3, Layers } from "lucide-react";
 
 export function GallerySection() {
-    // Gallery images - curated selection from wedding photoshoot (16 images)
+    // Gallery images - curated selection from wedding photoshoot (20 images)
     const galleryImages = [
-        // Formal photoshoot (image0 folder)
-        { id: 1, src: "/photos/image0/IMG_2316.webp", isPlaceholder: false },
-        { id: 2, src: "/photos/image0/IMG_2198.webp", isPlaceholder: false },
-        { id: 3, src: "/photos/image0/IMG_2254.webp", isPlaceholder: false },
-        { id: 4, src: "/photos/image0/IMG_2265.webp", isPlaceholder: false },
+        // Image0 Folder
+        { id: 1, src: "/photos/image0/IMG_2860.webp", isPlaceholder: false },
+        { id: 2, src: "/photos/image0/IMG_2971.webp", isPlaceholder: false },
+        { id: 3, src: "/photos/image0/IMG_2651.webp", isPlaceholder: false },
+        { id: 4, src: "/photos/image0/IMG_2549.webp", isPlaceholder: false },
         { id: 5, src: "/photos/image0/IMG_2330.webp", isPlaceholder: false },
-        { id: 6, src: "/photos/image0/IMG_2549.webp", isPlaceholder: false },
-        { id: 7, src: "/photos/image0/IMG_2651.webp", isPlaceholder: false },
-        { id: 8, src: "/photos/image0/IMG_2728.webp", isPlaceholder: false },
-        // Pre-nuptial session (image1 folder - updated high quality)
-        { id: 9, src: "/photos/image1/DSC00001.webp", isPlaceholder: false },
-        { id: 10, src: "/photos/image1/DSC00023.webp", isPlaceholder: false },
-        { id: 11, src: "/photos/image1/DSC00067.webp", isPlaceholder: false },
-        { id: 12, src: "/photos/image1/DSC00107.webp", isPlaceholder: false },
-        { id: 13, src: "/photos/image1/DSC00155.webp", isPlaceholder: false },
-        { id: 14, src: "/photos/image1/DSC00219.webp", isPlaceholder: false },
-        { id: 15, src: "/photos/image1/DSC00268.webp", isPlaceholder: false },
-        { id: 16, src: "/photos/image1/DSC01288.webp", isPlaceholder: false },
+        { id: 6, src: "/photos/image0/IMG_2254.webp", isPlaceholder: false },
+
+        // Image1 Folder
+        { id: 7, src: "/photos/image1/DSC00005.webp", isPlaceholder: false },
+        { id: 8, src: "/photos/image1/DSC00067.webp", isPlaceholder: false },
+        { id: 9, src: "/photos/image1/DSCF6838.webp", isPlaceholder: false },
+        { id: 10, src: "/photos/image1/DSC00268.webp", isPlaceholder: false },
+        { id: 11, src: "/photos/image1/DSC00292.webp", isPlaceholder: false },
+        { id: 12, src: "/photos/image1/DSC00287.webp", isPlaceholder: false },
+        { id: 13, src: "/photos/image1/DSC00977.webp", isPlaceholder: false },
+        { id: 14, src: "/photos/image1/image_2026-02-06_232856492.webp", isPlaceholder: false },
+        { id: 15, src: "/photos/image1/1 (1).webp", isPlaceholder: false },
+        { id: 16, src: "/photos/image1/1 (2).webp", isPlaceholder: false },
+        { id: 17, src: "/photos/image1/1 (3).webp", isPlaceholder: false },
+        { id: 18, src: "/photos/image1/1 (4).webp", isPlaceholder: false },
+        { id: 19, src: "/photos/image1/1 (5).webp", isPlaceholder: false },
+        { id: 20, src: "/photos/image1/DSC01288.webp", isPlaceholder: false },
     ];
 
     const [isExpanded, setIsExpanded] = useState(false);
@@ -47,7 +52,7 @@ export function GallerySection() {
         setSelectedImage(null);
     };
 
-    // Scatter positions for each card (16 positions for 16 images)
+    // Scatter positions for each card (20 positions for 20 images)
     const scatterPositions = [
         { x: -150, y: -100, rotate: -25, scale: 0.8 },
         { x: 180, y: -80, rotate: 30, scale: 0.75 },
@@ -65,6 +70,11 @@ export function GallerySection() {
         { x: 80, y: -100, rotate: -22, scale: 0.68 },
         { x: -140, y: -60, rotate: 12, scale: 0.66 },
         { x: 120, y: 80, rotate: -18, scale: 0.74 },
+        // New positions
+        { x: -160, y: -130, rotate: -8, scale: 0.69 },
+        { x: 170, y: 140, rotate: 12, scale: 0.71 },
+        { x: -90, y: 160, rotate: -28, scale: 0.64 },
+        { x: 130, y: -150, rotate: 22, scale: 0.76 },
     ];
 
     return (

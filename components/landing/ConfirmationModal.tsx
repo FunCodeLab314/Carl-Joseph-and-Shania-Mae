@@ -1,8 +1,9 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { Heart, MapPin, Clock } from "lucide-react";
+import { Heart, MapPin, Clock, MessageSquareHeart } from "lucide-react";
 import { Confetti } from "@/components/ui/Confetti";
+import Link from "next/link";
 
 interface ConfirmationModalProps {
     isOpen: boolean;
@@ -145,10 +146,20 @@ export function ConfirmationModal({ isOpen, onClose, formData, showConfetti }: C
                                 </div>
                             </div>
 
+                            {/* Leave a Wish Button */}
+                            <Link
+                                href="/messages"
+                                className="w-full flex items-center justify-center gap-2 bg-wedding-burgundy text-wedding-gold py-4 text-xs tracking-[0.2em] uppercase font-semibold hover:bg-wedding-burgundy-dark transition-all duration-300 rounded-lg mb-3"
+                                style={{ fontFamily: "var(--font-body)" }}
+                            >
+                                <MessageSquareHeart size={16} />
+                                Leave a Wish for the Couple
+                            </Link>
+
                             {/* Close Button */}
                             <button
                                 onClick={onClose}
-                                className="w-full bg-wedding-red text-wedding-charcoal py-4 text-xs tracking-[0.2em] uppercase font-semibold hover:bg-wedding-darkred transition-all duration-300 rounded-lg"
+                                className="w-full border border-wedding-charcoal/30 text-wedding-charcoal py-3 text-xs tracking-[0.2em] uppercase font-semibold hover:bg-wedding-pearl transition-all duration-300 rounded-lg"
                                 style={{ fontFamily: "var(--font-body)" }}
                             >
                                 Close

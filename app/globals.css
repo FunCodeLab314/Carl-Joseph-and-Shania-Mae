@@ -282,3 +282,21 @@ body {
     animation: none;
   }
 }
+
+/* Landscape Mobile Adjustments */
+@media (orientation: landscape) and (max-height: 500px) {
+  .hero-frame-content {
+    transform: scale(0.85);
+    transform-origin: center center;
+  }
+
+  .hero-frame-content h1 {
+    font-size: 2.5rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .hero-frame-content p {
+    font-size: 0.75rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+}

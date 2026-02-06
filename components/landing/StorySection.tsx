@@ -3,7 +3,6 @@
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { BookOpen, ChevronLeft, ChevronRight, X, Heart } from "lucide-react";
-import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
 import { FloralScroll } from "@/components/ui/OrnateFrame";
 import { CandleGlowSpots } from "@/components/ui/CandlelightParticles";
 
@@ -11,49 +10,41 @@ import { CandleGlowSpots } from "@/components/ui/CandlelightParticles";
 const stories = [
     {
         title: "How We Met",
-        subtitle: "Shania's POV",
-        content: `Parehas kaming working sa SM Store, first duty ko non after my prolonged leave due to unforeseen circumstances, I wasn't on myself by that time and wala akong pakealam to anyone and I was just making myself busy as much as possible, but then one of my colleague called me and said "Tingnan mo si uratex diser kanina ko pa nakikitang nakatingin sayo" and I replied "so? wala akong pake" pero makulit si colleague at pinakilala pa din ako sa kanya.
+        subtitle: "Carl Joseph's POV",
+        content: `First na nakita ko sya nung second week ko na sa work sa SM Mega. Nakita ko sya sa canteen naglalaro ng ML, then gusto ko sya i-approach agad but naiisip ko na baka isipin nya feeling close ako so ayon syempre di nalang ako nag salita. Tapos lumipas ang araw na hinahanap ko sya, madalas ko naman sya nakikita but may time na wala talaga sya sa store kasi nalaman ko naka prolonged leave sya.
 
-Carl Joseph said "Hi po" while blushing, and I was trying to be nice and said "Hi" too in a nonchalant way. After that, our colleague teased us and said mag shake hands kami pero etong si Carl Joseph ay hiyang-hiya at kulang nalang lumubog na sa floor, that's when I said "Ayoko ng shake hands gusto ko kiss agad" while grinning.`,
+And then bumalik siya, at one time inassist ko sya, bibili siya ng wardrobe non then sakin siya nagtanong (pero di nya na maalala ngayon yon). After that nag prolonged leave nanaman sya. And then bumalik nanaman, ngayon noong bumalik siya tinitingnan ko siya, sabi ko pa sa kaibigan kong si Justin "ay bumalik na pala yung baby ko" then nung gabi kasama niya yung colleague niya and tinawag ako, nahalata na pala non na tinitingnan ko si Shania, and yun na yung naging way para makausap ko siya.`,
+    },
+    {
+        title: "How We Met",
+        subtitle: "Shania's POV",
+        content: `Parehas kaming working sa SM Store, first duty ko non after my prolonged leave due to unforeseen circumstances, I wasn't on myself by that time and wala akong pakialam to anyone and I was just making myself busy as much as possible, but then one of my colleague called me and said "Tingnan mo si uratex diser kanina ko pa nakikitang nakatingin sayo" and I replied "so? wala akong pake" pero makulit si colleague at pinakilala pa din ako sa kanya.
+
+Carl Joseph said "Hi po" while blushing, and I was trying to be nice and said "Hi" too in a nonchalant way. After that, our colleague teased us and said mag shake hands kame pero etong si Carl Joseph ay hiyang-hiya at kulang nalang lumubog na sa floor, that's when I said "Ayoko ng shake hands gusto ko kiss agad" while grinning.`,
     },
     {
         title: "The First Date",
         subtitle: "Plaza Lucero, Cabanatuan City",
-        content: `Our first date was at Plaza Lucero in front of St. Nicholas of Tolentine Cathedral, Cabanatuan City. Nagtatanong siya that time ng gusto kong kainin dahil maraming choices of street foods sa location, pero ang gusto ko lang non is cotton candy and then sabi niya bibili siya but here's the thing kulang ng piso yung pambili niya at hiyang hiya siya sabihin saken dahil walang gcash si manong vendor hahaha kaya ang ending nanghingi pa siya saken 🤣`,
+        content: `Our first date was at Plaza Lucero in front of St.Nicholas of Tolentine Cathedral, Cabanatuan City. Nagtatanong siya that time ng gusto kong kainin dahil maraming choices of street foods sa location, pero ang gusto ko lang non is cotton candy and then sabi niya bibili siya but here's the thing kulang ng piso yung pambili niya at hiyang hiya siya sabihin saken dahil walang gcash si manong vendor hahaha kaya ang ending nanghingi pa siya saken 🤣`,
     },
     {
-        title: "The Proposal",
-        subtitle: "A Promise Kept",
-        content: `First month palang namin in a relationship sinasabi niya na sakin na at the age of 27 papakasalan niya na ko, he was 23 by that time. But then in September last year narealize niya malapit na siya mag 27. It was a simple night and it's just us having a great time talking about how we started and how it was going.
-
-Out of nowhere, he proposed without a ring.. only love, honesty and commitment, and I have no reason to say no and just like what Taylor Swift said "I like shiny things, but I'd marry you with paper rings" but I still received a simple yet elegant ring from him a few weeks later. And for me, that is perfect. 💍`,
+        title: "Carl Joseph",
+        subtitle: "His Personality",
+        content: `Carl Joseph likes mobile games and Gloc-9 Songs, he is jolly and very kind to everyone around him. He would rather stay at home with Shania than go outside and have a good time with others. Sometimes Shania would push her to have a bond with others but he often declined as he wanted to go out with her.`,
+    },
+    {
+        title: "Shania Mae",
+        subtitle: "Her Personality",
+        content: `Shania Mae likes reading novel books and writing poetry, she is a die hard fan of Taylor Swift and loves singing. She is kind "sometimes" it depends on the person and the situation. Shania is very straight to the point to anyone that makes other people think that she's maldita. She's the one who's nonchalant to their relationship.`,
+    },
+    {
+        title: "Bonding Moments",
+        subtitle: "#GodsRemarCARLbleGiftforSHANIA",
+        content: `We both love eating samgyupsal and seafood. We also love having a family bonding out of town with our two children yearly.`,
     },
 ];
 
-// Photo grid - 12 photos for mobile (3x4), 20 for desktop (5x4)
-const photoGridItems = [
-    { rotation: -8, scale: 1 },
-    { rotation: 5, scale: 0.95 },
-    { rotation: -3, scale: 1.05 },
-    { rotation: 7, scale: 0.9 },
-    { rotation: -5, scale: 1 },
-    { rotation: 4, scale: 0.95 },
-    { rotation: -6, scale: 1 },
-    { rotation: 2, scale: 1.05 },
-    { rotation: -4, scale: 0.95 },
-    { rotation: 6, scale: 1 },
-    { rotation: -5, scale: 1 },
-    { rotation: 8, scale: 0.9 },
-    // Desktop additional photos (hidden on mobile)
-    { rotation: -2, scale: 1 },
-    { rotation: 5, scale: 1.05 },
-    { rotation: -7, scale: 0.95 },
-    { rotation: 3, scale: 1.05 },
-    { rotation: -4, scale: 1 },
-    { rotation: 6, scale: 0.95 },
-    { rotation: -3, scale: 1 },
-    { rotation: 4, scale: 0.9 },
-];
+
 
 // Split content into pages
 const CHARS_PER_PAGE = 450;
@@ -179,117 +170,6 @@ export function StorySection() {
                     <FloralScroll className="w-32 md:w-48 h-6 mx-auto" />
                 </motion.div>
 
-                {/* Pinterest-Style Photo Grid Wall - Mobile First */}
-                <motion.div
-                    className="relative z-10 max-w-6xl mx-auto px-3 md:px-8 mb-8 md:mb-12"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                >
-                    {/* Wire Grid Container */}
-                    <div className="relative py-4 md:py-8">
-                        {/* Wire Grid Background Lines */}
-                        <div className="absolute inset-0 pointer-events-none">
-                            {/* Horizontal Lines */}
-                            {[...Array(5)].map((_, i) => (
-                                <div
-                                    key={`h-${i}`}
-                                    className="absolute left-0 right-0 h-[1px] md:h-[2px] bg-wedding-gold/15 md:bg-wedding-gold/20"
-                                    style={{ top: `${(i + 1) * 20}%` }}
-                                />
-                            ))}
-                            {/* Vertical Lines */}
-                            {[...Array(4)].map((_, i) => (
-                                <div
-                                    key={`v-${i}`}
-                                    className="absolute top-0 bottom-0 w-[1px] md:w-[2px] bg-wedding-gold/15 md:bg-wedding-gold/20"
-                                    style={{ left: `${(i + 1) * 25}%` }}
-                                />
-                            ))}
-                        </div>
-
-                        {/* Fairy Lights - Fixed positions to avoid hydration mismatch */}
-                        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                            {[
-                                { left: 18, top: 20, duration: 3, delay: 0 },
-                                { left: 38, top: 25, duration: 3.5, delay: 0.5 },
-                                { left: 58, top: 18, duration: 2.8, delay: 1 },
-                                { left: 78, top: 28, duration: 3.2, delay: 1.5 },
-                                { left: 22, top: 70, duration: 3.8, delay: 0.3 },
-                                { left: 42, top: 75, duration: 2.6, delay: 0.8 },
-                                { left: 62, top: 68, duration: 3.4, delay: 1.2 },
-                                { left: 82, top: 72, duration: 3, delay: 0.6 },
-                            ].map((light, i) => (
-                                <motion.div
-                                    key={`light-${i}`}
-                                    className="absolute w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-wedding-gold/50 md:bg-wedding-gold/60"
-                                    style={{
-                                        left: `${light.left}%`,
-                                        top: `${light.top}%`,
-                                    }}
-                                    animate={{
-                                        opacity: [0.3, 0.7, 0.3],
-                                        scale: [1, 1.3, 1],
-                                    }}
-                                    transition={{
-                                        duration: light.duration,
-                                        repeat: Infinity,
-                                        delay: light.delay,
-                                    }}
-                                />
-                            ))}
-                        </div>
-
-                        {/* Photo Grid - Mobile: 3 cols, Desktop: 5 cols */}
-                        <div className="grid grid-cols-3 md:grid-cols-5 gap-2 md:gap-4 relative z-10">
-                            {photoGridItems.map((item, index) => (
-                                <motion.div
-                                    key={index}
-                                    className={`relative ${index >= 12 ? 'hidden md:block' : ''}`}
-                                    initial={{ opacity: 0, y: 20, rotate: -15 }}
-                                    whileInView={{
-                                        opacity: 1,
-                                        y: 0,
-                                        rotate: item.rotation,
-                                    }}
-                                    viewport={{ once: true }}
-                                    transition={{
-                                        delay: index * 0.03,
-                                        duration: 0.4,
-                                        type: "spring",
-                                        stiffness: 120,
-                                    }}
-                                    whileHover={{
-                                        scale: 1.12,
-                                        rotate: 0,
-                                        zIndex: 20,
-                                        transition: { duration: 0.2 }
-                                    }}
-                                    style={{
-                                        transform: `rotate(${item.rotation}deg) scale(${item.scale})`,
-                                    }}
-                                >
-                                    {/* Clip/Pin */}
-                                    <div className="absolute -top-1 md:-top-2 left-1/2 -translate-x-1/2 z-10">
-                                        <div className="w-2.5 h-3 md:w-4 md:h-5 bg-gradient-to-b from-wedding-charcoal to-wedding-jet rounded-sm shadow-md" />
-                                    </div>
-
-                                    {/* Polaroid Frame */}
-                                    <div className="bg-white p-1 pb-3 md:p-2 md:pb-6 rounded-sm shadow-lg md:shadow-xl hover:shadow-2xl transition-shadow">
-                                        <div className="aspect-square overflow-hidden rounded-sm">
-                                            <PlaceholderImage
-                                                className="w-full h-full"
-                                                variant="story"
-                                                label={`${index + 1}`}
-                                            />
-                                        </div>
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </div>
-                </motion.div>
 
                 {/* Read Our Story Button - Mobile First */}
                 <motion.div
@@ -346,69 +226,82 @@ export function StorySection() {
                             </button>
 
                             <div className="relative" style={{ transformStyle: "preserve-3d" }}>
-                                {/* Book Pages - Mobile: Stack, Desktop: Side by side */}
-                                <div className="flex flex-col md:grid md:grid-cols-2 gap-0 bg-wedding-cream rounded-lg overflow-hidden shadow-2xl border border-wedding-gold/20">
+                                {/* Elegant Gold-Framed Book Page */}
+                                <div className="relative bg-gradient-to-br from-wedding-cream via-wedding-pearl to-wedding-cream rounded-lg overflow-hidden shadow-2xl max-w-2xl mx-auto">
+                                    {/* Outer Gold Frame */}
+                                    <div className="absolute inset-0 border-4 md:border-8 border-wedding-gold/40 rounded-lg pointer-events-none" />
+                                    <div className="absolute inset-2 md:inset-4 border-2 md:border-4 border-wedding-gold/25 rounded-md pointer-events-none" />
 
-                                    {/* Left Page - Photo */}
-                                    <div className="relative bg-gradient-to-br from-wedding-pearl to-wedding-cream h-[32vh] md:h-[70vh] p-3 md:p-6 border-b md:border-b-0 md:border-r border-wedding-gold/20 flex flex-col">
-                                        <div className="flex-1 flex items-center justify-center p-1 md:p-4">
-                                            <div className="w-full max-w-[140px] md:max-w-[280px] aspect-[3/4] rounded-lg overflow-hidden border-2 md:border-4 border-white shadow-lg">
-                                                <PlaceholderImage
-                                                    className="w-full h-full"
-                                                    variant="story"
-                                                    label={`Story ${currentPageData.storyIndex + 1}`}
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="hidden md:block absolute right-0 top-0 bottom-0 w-4 bg-gradient-to-l from-black/20 to-transparent" />
-                                    </div>
+                                    {/* Corner Flourishes */}
+                                    <div className="absolute top-3 left-3 md:top-5 md:left-5 w-8 h-8 md:w-12 md:h-12 border-l-2 border-t-2 border-wedding-gold/50 rounded-tl-lg" />
+                                    <div className="absolute top-3 right-3 md:top-5 md:right-5 w-8 h-8 md:w-12 md:h-12 border-r-2 border-t-2 border-wedding-gold/50 rounded-tr-lg" />
+                                    <div className="absolute bottom-3 left-3 md:bottom-5 md:left-5 w-8 h-8 md:w-12 md:h-12 border-l-2 border-b-2 border-wedding-gold/50 rounded-bl-lg" />
+                                    <div className="absolute bottom-3 right-3 md:bottom-5 md:right-5 w-8 h-8 md:w-12 md:h-12 border-r-2 border-b-2 border-wedding-gold/50 rounded-br-lg" />
 
-                                    {/* Right Page - Story */}
+                                    {/* Diamond Accents in Corners */}
+                                    <div className="absolute top-6 left-6 md:top-10 md:left-10 w-2 h-2 md:w-3 md:h-3 bg-wedding-gold/30 rotate-45" />
+                                    <div className="absolute top-6 right-6 md:top-10 md:right-10 w-2 h-2 md:w-3 md:h-3 bg-wedding-gold/30 rotate-45" />
+                                    <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 w-2 h-2 md:w-3 md:h-3 bg-wedding-gold/30 rotate-45" />
+                                    <div className="absolute bottom-6 right-6 md:bottom-10 md:right-10 w-2 h-2 md:w-3 md:h-3 bg-wedding-gold/30 rotate-45" />
+
+                                    {/* Book Page Content */}
                                     <motion.div
-                                        className="relative bg-gradient-to-bl from-wedding-pearl to-wedding-cream h-[42vh] md:h-[70vh] p-4 md:p-8 flex flex-col"
+                                        className="relative h-[65vh] md:h-[70vh] p-8 md:p-12 flex flex-col"
                                         style={{ transformStyle: "preserve-3d" }}
                                         key={currentPage}
                                         initial={{ rotateY: flipDirection === "next" ? 90 : -90, opacity: 0 }}
                                         animate={{ rotateY: 0, opacity: 1 }}
                                         transition={{ duration: 0.4, ease: "easeOut" }}
                                     >
-                                        <div className="hidden md:block absolute left-0 top-0 bottom-0 w-4 bg-gradient-to-r from-black/10 to-transparent" />
+                                        {/* Top Decorative Divider */}
+                                        <div className="flex items-center justify-center gap-3 mb-4 md:mb-6">
+                                            <div className="w-8 md:w-16 h-[1px] bg-gradient-to-r from-transparent to-wedding-gold/50" />
+                                            <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-wedding-gold/40 rotate-45" />
+                                            <div className="w-8 md:w-16 h-[1px] bg-gradient-to-l from-transparent to-wedding-gold/50" />
+                                        </div>
 
-                                        <div className="flex-1 md:pl-4 flex flex-col">
+                                        <div className="flex-1 flex flex-col justify-center">
                                             {currentPageData.pageOfStory === 1 && (
-                                                <div className="text-center mb-2 md:mb-4">
-                                                    <Heart className="text-wedding-burgundy mx-auto mb-1 md:mb-2" size={16} fill="currentColor" />
-                                                    <h3 className="text-wedding-burgundy text-base md:text-2xl mb-0.5 md:mb-1" style={{ fontFamily: "var(--font-display)" }}>
+                                                <div className="text-center mb-4 md:mb-6">
+                                                    <Heart className="text-wedding-burgundy mx-auto mb-2 md:mb-3" size={20} fill="currentColor" />
+                                                    <h3 className="text-wedding-burgundy text-xl md:text-3xl mb-1 md:mb-2" style={{ fontFamily: "var(--font-display)" }}>
                                                         {currentPageData.title}
                                                     </h3>
-                                                    <p className="text-wedding-gold text-[10px] md:text-xs tracking-wide" style={{ fontFamily: "var(--font-body)" }}>
+                                                    <p className="text-wedding-gold text-xs md:text-sm tracking-wider uppercase" style={{ fontFamily: "var(--font-ornate)" }}>
                                                         {currentPageData.subtitle}
                                                     </p>
-                                                    <div className="flex items-center justify-center gap-2 mt-2">
-                                                        <div className="w-6 md:w-8 h-[1px] bg-wedding-gold/50" />
-                                                        <div className="w-1 h-1 rounded-full bg-wedding-burgundy/50" />
-                                                        <div className="w-6 md:w-8 h-[1px] bg-wedding-gold/50" />
+                                                    <div className="flex items-center justify-center gap-3 mt-3 md:mt-4">
+                                                        <div className="w-12 md:w-20 h-[1px] bg-wedding-gold/40" />
+                                                        <Heart className="text-wedding-gold/50" size={10} fill="currentColor" />
+                                                        <div className="w-12 md:w-20 h-[1px] bg-wedding-gold/40" />
                                                     </div>
                                                 </div>
                                             )}
 
                                             {currentPageData.pageOfStory > 1 && (
-                                                <p className="text-wedding-gold/60 text-[10px] md:text-xs mb-1 md:mb-2 italic text-center" style={{ fontFamily: "var(--font-body)" }}>
+                                                <p className="text-wedding-gold/50 text-xs md:text-sm mb-3 md:mb-4 italic text-center" style={{ fontFamily: "var(--font-body)" }}>
                                                     ...continued
                                                 </p>
                                             )}
 
-                                            <div className="flex-1 flex items-center">
-                                                <p className="text-wedding-charcoal leading-relaxed text-xs md:text-base" style={{ fontFamily: "var(--font-body)" }}>
+                                            <div className="flex-1 flex items-center justify-center px-2 md:px-4">
+                                                <p className="text-wedding-charcoal leading-relaxed text-sm md:text-lg text-center" style={{ fontFamily: "var(--font-body)" }}>
                                                     {currentPageData.content}
                                                     {currentPageData.pageOfStory < currentPageData.totalPagesInStory && (
-                                                        <span className="text-wedding-gold/60">...</span>
+                                                        <span className="text-wedding-gold/50"> ...</span>
                                                     )}
                                                 </p>
                                             </div>
                                         </div>
 
-                                        <div className="text-center text-wedding-gold/40 text-[10px] md:text-xs mt-1 md:mt-2" style={{ fontFamily: "var(--font-body)" }}>
+                                        {/* Bottom Decorative Divider */}
+                                        <div className="flex items-center justify-center gap-3 mt-4 md:mt-6 mb-2">
+                                            <div className="w-8 md:w-16 h-[1px] bg-gradient-to-r from-transparent to-wedding-gold/50" />
+                                            <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-wedding-gold/40 rotate-45" />
+                                            <div className="w-8 md:w-16 h-[1px] bg-gradient-to-l from-transparent to-wedding-gold/50" />
+                                        </div>
+
+                                        <div className="text-center text-wedding-gold/50 text-xs md:text-sm" style={{ fontFamily: "var(--font-ornate)" }}>
                                             {currentPage + 1} / {totalPages}
                                         </div>
                                     </motion.div>

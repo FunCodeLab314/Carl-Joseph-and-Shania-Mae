@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Heart, Utensils, ExternalLink, X } from "lucide-react";
-import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
 import { OrnateFrame, FloralScroll } from "@/components/ui/OrnateFrame";
 import { CandleGlowSpots } from "@/components/ui/CandlelightParticles";
 
@@ -68,7 +67,10 @@ export function VenueSection() {
                         >
                             {/* Church Photo - Ornate Frame */}
                             <div className="relative group">
-                                <div className="ornate-border rounded-lg overflow-hidden bg-wedding-burgundy-dark/30 p-2">
+                                <div
+                                    className="ornate-border rounded-lg overflow-hidden bg-wedding-burgundy-dark/30 p-2 cursor-pointer"
+                                    onClick={() => setSelectedImage("/photos/ceremony.webp")}
+                                >
                                     {/* Corner flourishes */}
                                     <svg className="absolute -top-2 -left-2 w-8 h-8 text-wedding-gold z-10" viewBox="0 0 32 32">
                                         <path d="M4 4 Q12 2 16 4 Q20 6 24 4 L24 8 Q20 12 24 16 L20 16 Q16 12 16 8 Q12 8 8 12 L8 8 Q6 6 4 4" fill="currentColor" opacity="0.8" />
@@ -82,17 +84,20 @@ export function VenueSection() {
                                     <svg className="absolute -bottom-2 -right-2 w-8 h-8 text-wedding-gold z-10 rotate-180" viewBox="0 0 32 32">
                                         <path d="M4 4 Q12 2 16 4 Q20 6 24 4 L24 8 Q20 12 24 16 L20 16 Q16 12 16 8 Q12 8 8 12 L8 8 Q6 6 4 4" fill="currentColor" opacity="0.8" />
                                     </svg>
-                                    <PlaceholderImage
-                                        className="w-full h-full aspect-[3/4] rounded"
-                                        label="Church Photo"
-                                        variant="venue"
+                                    <img
+                                        src="/photos/ceremony.webp"
+                                        alt="St. Nicholas of Tolentine Parish Cathedral"
+                                        className="w-full h-full aspect-[3/4] object-cover rounded transition-transform duration-300 group-hover:scale-105"
                                     />
                                 </div>
                             </div>
 
                             {/* Reception Venue - Ornate Frame */}
                             <div className="relative group">
-                                <div className="ornate-border rounded-lg overflow-hidden bg-wedding-burgundy-dark/30 p-2">
+                                <div
+                                    className="ornate-border rounded-lg overflow-hidden bg-wedding-burgundy-dark/30 p-2 cursor-pointer"
+                                    onClick={() => setSelectedImage("/photos/reception.webp")}
+                                >
                                     {/* Corner flourishes */}
                                     <svg className="absolute -top-2 -left-2 w-8 h-8 text-wedding-gold z-10" viewBox="0 0 32 32">
                                         <path d="M4 4 Q12 2 16 4 Q20 6 24 4 L24 8 Q20 12 24 16 L20 16 Q16 12 16 8 Q12 8 8 12 L8 8 Q6 6 4 4" fill="currentColor" opacity="0.8" />
@@ -106,10 +111,10 @@ export function VenueSection() {
                                     <svg className="absolute -bottom-2 -right-2 w-8 h-8 text-wedding-gold z-10 rotate-180" viewBox="0 0 32 32">
                                         <path d="M4 4 Q12 2 16 4 Q20 6 24 4 L24 8 Q20 12 24 16 L20 16 Q16 12 16 8 Q12 8 8 12 L8 8 Q6 6 4 4" fill="currentColor" opacity="0.8" />
                                     </svg>
-                                    <PlaceholderImage
-                                        className="w-full h-full aspect-[3/4] rounded"
-                                        label="Reception Venue"
-                                        variant="venue"
+                                    <img
+                                        src="/photos/reception.webp"
+                                        alt="Fave Events Place Reception Venue"
+                                        className="w-full h-full aspect-[3/4] object-cover rounded transition-transform duration-300 group-hover:scale-105"
                                     />
                                 </div>
                             </div>

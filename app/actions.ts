@@ -268,3 +268,73 @@ export async function submitRSVP(formData: FormData): Promise<SubmitRSVPResult> 
         };
     }
 }
+
+// ============================================
+// MESSAGE BOARD ACTIONS
+// ============================================
+
+interface SubmitMessageResult {
+    success: boolean;
+    message: string;
+}
+
+export async function submitMessage(formData: FormData): Promise<SubmitMessageResult> {
+    try {
+        const name = formData.get("name") as string;
+        const messageText = formData.get("message") as string;
+
+        if (!name || !name.trim()) {
+            return { success: false, message: "Please provide your name." };
+        }
+        if (!messageText || !messageText.trim()) {
+            return { success: false, message: "Please write a message." };
+        }
+
+        const { error } = await supabase.from("messages").insert({
+            name: name.trim(),
+            message: messageText.trim(),
+        });
+
+        if (error) {
+            console.error("Supabase Error submitting message:", error);
+            return { success: false, message: "Failed to save your message. Please try again." };
+        }
+
+        return { success: true, message: "Your message has been posted!" };
+    } catch (error) {
+        console.error("Submit Message Error:", error);
+        return { success: false, message: "An unexpected error occurred." };
+    }
+}
+
+interface Message {
+    id: string;
+    name: string;
+    message: string;
+    created_at: string;
+}
+
+interface GetMessagesResult {
+    success: boolean;
+    messages: Message[];
+    error?: string;
+}
+
+export async function getMessages(): Promise<GetMessagesResult> {
+    try {
+        const { data, error } = await supabase
+            .from("messages")
+            .select("id, name, message, created_at")
+            .order("created_at", { ascending: false });
+
+        if (error) {
+            console.error("Supabase Error fetching messages:", error);
+            return { success: false, messages: [], error: "Failed to load messages." };
+        }
+
+        return { success: true, messages: data || [] };
+    } catch (error) {
+        console.error("Get Messages Error:", error);
+        return { success: false, messages: [], error: "An unexpected error occurred." };
+    }
+}

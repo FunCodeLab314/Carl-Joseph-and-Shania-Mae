@@ -58,6 +58,11 @@ export function RSVPSection() {
                     setInvitationId(inviteId);
                     setMaxGuests(result.maxGuests);
 
+                    // Pre-fill name from invitation if available
+                    if (result.familyName) {
+                        setFormData(prev => ({ ...prev, name: result.familyName || "" }));
+                    }
+
                     if (result.status === 'responded') {
                         setIsInvitationUsed(true);
                     }
@@ -376,15 +381,26 @@ export function RSVPSection() {
                                         >
                                             Your Full Name <span className="text-wedding-gold">*</span>
                                         </label>
-                                        <input
-                                            type="text"
-                                            required
-                                            value={formData.name}
-                                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                            className="w-full bg-transparent border-b-2 border-wedding-gold/40 text-wedding-pearl py-3 focus:border-wedding-gold focus:outline-none transition-all duration-300 placeholder:text-wedding-pearl/50"
-                                            style={{ fontFamily: "var(--font-body)" }}
-                                            placeholder="Enter your full name"
-                                        />
+                                        <div className="relative">
+                                            <input
+                                                type="text"
+                                                required
+                                                value={formData.name}
+                                                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                                                readOnly={!!invitationId}
+                                                className={`w-full bg-transparent border-b-2 text-wedding-pearl py-3 focus:outline-none transition-all duration-300 placeholder:text-wedding-pearl/50 ${invitationId
+                                                        ? "border-wedding-gold/60 cursor-not-allowed opacity-80"
+                                                        : "border-wedding-gold/40 focus:border-wedding-gold"
+                                                    }`}
+                                                style={{ fontFamily: "var(--font-body)" }}
+                                                placeholder="Enter your full name"
+                                            />
+                                            {invitationId && (
+                                                <div className="absolute right-0 top-1/2 -translate-y-1/2 text-wedding-gold/60 text-xs italic flex items-center gap-1">
+                                                    <span>(Locked)</span>
+                                                </div>
+                                            )}
+                                        </div>
                                     </div>
 
                                     {/* Email */}

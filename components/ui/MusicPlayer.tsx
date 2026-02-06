@@ -87,7 +87,7 @@ export function MusicPlayer() {
             {/* Music Control Button - Bottom Right */}
             <motion.button
                 onClick={togglePlay}
-                className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-wedding-jet/80 backdrop-blur-sm border border-wedding-gold/30 rounded-full px-4 py-3 shadow-lg hover:bg-wedding-jet transition-colors group"
+                className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-wedding-jet border border-wedding-gold/30 rounded-full px-4 py-3 shadow-lg hover:bg-wedding-black transition-colors group"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1, duration: 0.5 }}

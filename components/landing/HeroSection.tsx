@@ -6,7 +6,6 @@ import { ChevronDown, PlayCircle } from "lucide-react";
 import { Countdown } from "@/components/ui/Countdown";
 import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
 import { OrnateFrame, FloralScroll } from "@/components/ui/OrnateFrame";
-import { CandleGlowSpots } from "@/components/ui/CandlelightParticles";
 import { VideoModal } from "@/components/ui/VideoModal";
 
 export function HeroSection() {
@@ -42,7 +41,7 @@ export function HeroSection() {
                 {/* Background Video (Low Opacity) */}
                 <div className="absolute inset-0 overflow-hidden">
                     <video
-                        src="/wedding_vid.mp4"
+                        src="/wedding_preview.mp4"
                         className="w-full h-full object-cover opacity-70 mix-blend-overlay"
                         autoPlay
                         muted
@@ -51,52 +50,14 @@ export function HeroSection() {
                     />
                 </div>
 
-                {/* Background Placeholder with dark overlay */}
-                <PlaceholderImage
-                    className="absolute inset-0 w-full h-full opacity-30"
-                    label="Hero Background"
-                    variant="hero"
-                />
+                {/* Simple Overlay for text readability (replaces expensive blur/vignette layers) */}
+                <div className="absolute inset-0 bg-black/30" />
 
-                {/* Velvet texture overlay */}
-                <div className="absolute inset-0 velvet-texture opacity-30" />
-
-                {/* Chandelier light effect from top */}
+                {/* Chandelier light effect (static gradient is cheap) */}
                 <div
                     className="absolute inset-0 pointer-events-none"
                     style={{
                         background: "radial-gradient(ellipse at center top, rgba(212, 175, 55, 0.15) 0%, transparent 50%)"
-                    }}
-                />
-
-                {/* Candlelight glow spots */}
-                <CandleGlowSpots count={6} />
-
-                {/* Corner candle glows */}
-                <motion.div
-                    className="absolute bottom-20 left-10 w-40 h-40 rounded-full pointer-events-none"
-                    style={{
-                        background: "radial-gradient(circle, rgba(212, 175, 55, 0.3), transparent 70%)",
-                        filter: "blur(30px)"
-                    }}
-                    animate={{ opacity: [0.4, 0.7, 0.4], scale: [1, 1.2, 1] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                />
-                <motion.div
-                    className="absolute bottom-20 right-10 w-40 h-40 rounded-full pointer-events-none"
-                    style={{
-                        background: "radial-gradient(circle, rgba(212, 175, 55, 0.3), transparent 70%)",
-                        filter: "blur(30px)"
-                    }}
-                    animate={{ opacity: [0.5, 0.8, 0.5], scale: [1.1, 1.3, 1.1] }}
-                    transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                />
-
-                {/* Vignette overlay */}
-                <div
-                    className="absolute inset-0 pointer-events-none"
-                    style={{
-                        background: "radial-gradient(ellipse at center, transparent 40%, rgba(10, 10, 10, 0.6) 100%)"
                     }}
                 />
 
@@ -253,11 +214,11 @@ export function HeroSection() {
                         animate={{ opacity: 1 }}
                         transition={{ delay: 2.2, duration: 0.6 }}
                         onClick={() => setShowVideo(true)}
-                        className="absolute bottom-8 right-4 md:right-8 flex items-center gap-2 px-4 py-2 bg-wedding-black/40 hover:bg-wedding-black/60 backdrop-blur-sm border border-wedding-gold/30 rounded-full group transition-all duration-300 transform hover:scale-105"
+                        className="absolute bottom-8 right-4 md:right-8 flex items-center gap-2 px-4 py-2 bg-wedding-black/60 border border-wedding-gold/30 rounded-full group transition-all duration-300 transform hover:scale-105"
                     >
                         <div className="relative">
-                            <div className="absolute inset-0 bg-wedding-gold/20 rounded-full animate-ping" />
-                            <PlayCircle className="text-wedding-gold w-5 h-5 md:w-6 md:h-6" />
+                            <div className="absolute inset-0 bg-wedding-gold/20 rounded-full" />
+                            <PlayCircle className="text-wedding-gold w-5 h-5 md:w-6 md:h-6 relative z-10" />
                         </div>
                         <span className="text-wedding-gold/80 text-[10px] md:text-xs tracking-widest uppercase font-medium group-hover:text-wedding-gold transition-colors" style={{ fontFamily: "var(--font-body)" }}>
                             Watch Film

@@ -44,6 +44,33 @@ export function MusicPlayer() {
         }
     };
 
+    // Listen for custom "pause-bgm" and "resume-bgm" events from VideoModal
+    useEffect(() => {
+        const handlePauseBgm = () => {
+            if (audioRef.current && !audioRef.current.paused) {
+                audioRef.current.pause();
+                setIsPlaying(false);
+                // Mark that we paused automatically so we can resume automatically
+                sessionStorage.setItem("bgm-auto-paused", "true");
+            }
+        };
+
+        const handleResumeBgm = () => {
+            if (audioRef.current && sessionStorage.getItem("bgm-auto-paused") === "true") {
+                audioRef.current.play().then(() => setIsPlaying(true)).catch(() => { });
+                sessionStorage.removeItem("bgm-auto-paused");
+            }
+        };
+
+        window.addEventListener("pause-bgm", handlePauseBgm);
+        window.addEventListener("resume-bgm", handleResumeBgm);
+
+        return () => {
+            window.removeEventListener("pause-bgm", handlePauseBgm);
+            window.removeEventListener("resume-bgm", handleResumeBgm);
+        };
+    }, []);
+
     // Soundwave bars animation
     const bars = [1, 2, 3, 4, 5];
 
@@ -52,7 +79,7 @@ export function MusicPlayer() {
             {/* Hidden Audio Element */}
             <audio
                 ref={audioRef}
-                src="/wedding-bgm.mp3"
+                src="/wedding_vid.mp4"
                 loop
                 preload="auto"
             />

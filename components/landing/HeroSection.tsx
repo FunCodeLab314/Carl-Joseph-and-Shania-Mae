@@ -2,14 +2,16 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, PlayCircle } from "lucide-react";
 import { Countdown } from "@/components/ui/Countdown";
 import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
 import { OrnateFrame, FloralScroll } from "@/components/ui/OrnateFrame";
 import { CandleGlowSpots } from "@/components/ui/CandlelightParticles";
+import { VideoModal } from "@/components/ui/VideoModal";
 
 export function HeroSection() {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [showVideo, setShowVideo] = useState(false);
 
     const hashtags = [
         "#GodsRemarCARLbleGiftforSHANIA",
@@ -28,8 +30,26 @@ export function HeroSection() {
     return (
         <>
             <section id="home" className="relative h-screen w-full overflow-hidden">
+                <VideoModal
+                    isOpen={showVideo}
+                    onClose={() => setShowVideo(false)}
+                    videoSrc="/wedding_vid.mp4"
+                />
+
                 {/* Victorian Burgundy Gradient Background */}
                 <div className="absolute inset-0 bg-gradient-to-b from-wedding-burgundy-dark via-wedding-maroon to-wedding-wine" />
+
+                {/* Background Video (Low Opacity) */}
+                <div className="absolute inset-0 overflow-hidden">
+                    <video
+                        src="/wedding_vid.mp4"
+                        className="w-full h-full object-cover opacity-70 mix-blend-overlay"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                    />
+                </div>
 
                 {/* Background Placeholder with dark overlay */}
                 <PlaceholderImage
@@ -226,6 +246,23 @@ export function HeroSection() {
                             <ChevronDown className="text-wedding-gold/60" size={20} />
                         </motion.div>
                     </motion.div>
+
+                    {/* Play Video Button (Bottom Right) */}
+                    <motion.button
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 2.2, duration: 0.6 }}
+                        onClick={() => setShowVideo(true)}
+                        className="absolute bottom-8 right-4 md:right-8 flex items-center gap-2 px-4 py-2 bg-wedding-black/40 hover:bg-wedding-black/60 backdrop-blur-sm border border-wedding-gold/30 rounded-full group transition-all duration-300 transform hover:scale-105"
+                    >
+                        <div className="relative">
+                            <div className="absolute inset-0 bg-wedding-gold/20 rounded-full animate-ping" />
+                            <PlayCircle className="text-wedding-gold w-5 h-5 md:w-6 md:h-6" />
+                        </div>
+                        <span className="text-wedding-gold/80 text-[10px] md:text-xs tracking-widest uppercase font-medium group-hover:text-wedding-gold transition-colors" style={{ fontFamily: "var(--font-body)" }}>
+                            Watch Film
+                        </span>
+                    </motion.button>
                 </div>
             </section>
         </>
